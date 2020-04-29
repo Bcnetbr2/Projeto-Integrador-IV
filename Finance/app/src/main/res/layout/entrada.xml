@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/VerdeDinheiro"
+android:orientation="vertical"
+tools:context=".Entrada">
+
+<ImageView
+    android:id="@+id/imageView"
+    android:layout_width="match_parent"
+    android:layout_height="508dp"
+    app:srcCompat="@drawable/porquinho" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="60dp"
+    android:layout_marginRight="60dp"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnEntrar"
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/buttonprincipalamarelo"
+
+        android:fontFamily="@font/montserrat"
+        android:text="Entrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnCadastrar"
+
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+
+        android:fontFamily="@font/montserrat"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:text="Cadastrar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+</LinearLayout>
+
+</LinearLayout>

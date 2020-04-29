@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/AmareloOuro">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Filtrar por data"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rbHoje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Hoje" />
+
+        <RadioButton
+            android:id="@+id/rbSemana"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Semana" />
+
+        <RadioButton
+            android:id="@+id/rbMes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Mês" />
+
+        <RadioButton
+            android:id="@+id/rbAno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Ano" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Filtrar por categoria"
+            android:textSize="18sp" />
+
+        <RadioButton
+            android:id="@+id/rbSuper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Supermecado" />
+
+        <RadioButton
+            android:id="@+id/rbBanco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Banco/Fatura" />
+
+        <RadioButton
+            android:id="@+id/rbLuz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Conta de Luz" />
+
+        <RadioButton
+            android:id="@+id/rbInternet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Internet" />
+
+        <Button
+            android:id="@+id/btnAdicionarFiltro"
+
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+
+
+            android:layout_marginTop="60dp"
+            android:background="@drawable/buttonprincipalverde"
+            android:fontFamily="@font/montserrat"
+            android:text="Adicionar Filtro"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

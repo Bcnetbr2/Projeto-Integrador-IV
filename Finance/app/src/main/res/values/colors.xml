@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="VerdeDinheiro">#249C9C</color>
+    <color name="AmareloOuro">#FBB42C</color>
+    <color name="Preto">#000000</color>
+    <color name="Branco">#FFFFFF</color>
+    <color name="Grafico1">#E5E5F0</color>
+    <color name="Grafico2">#9999C3</color>
+    <color name="Grafico3">#4D4D96</color>
+    <color name="Grafico4">#020269</color>
+    <color name="item">#259292</color>
+</resources>

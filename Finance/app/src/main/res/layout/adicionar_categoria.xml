@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/AmareloOuro">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Inserir um novo gasto"
+        android:textAlignment="center"
+        android:textColor="@color/VerdeDinheiro"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtAddCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:ems="10"
+        android:hint="Nome/Categoria"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edtAddValorGasto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Valor gasto"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/btnSalvarDados"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalverde"
+        android:fontFamily="@font/montserrat"
+        android:text="Adicionar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+</LinearLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".profile"
+    android:background="@color/VerdeDinheiro">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/tgHome"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/toggle_background"
+            android:button="@drawable/home"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgReport"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/report"
+            android:button="@drawable/report"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgAdd"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/add"
+            android:button="@drawable/add"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgProfile"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/profile"
+            android:button="@drawable/profile"
+            android:scrollbars="none"
+            android:text="" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Dados pessoais"
+        android:textColor="@color/AmareloOuro"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Nome"
+            android:textColor="@color/Preto" />
+
+        <EditText
+            android:id="@+id/edtRecebeNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Email"
+            android:textColor="@color/Preto" />
+
+        <EditText
+            android:id="@+id/edtRecebeEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Telefone"
+            android:textColor="@color/Preto" />
+
+        <EditText
+            android:id="@+id/edtRecebeTele"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Renda"
+            android:textColor="@color/Preto" />
+
+        <EditText
+            android:id="@+id/edtRecebeRenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtSenhaAtual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Senha Atual"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/edtSenhaNova"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nova senha"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/edtConfirmacaoSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirme nova senha"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnSalvarDados"
+
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="60dp"
+            android:background="@drawable/buttonprincipalamarelo"
+            android:fontFamily="@font/montserrat"
+            android:text="Salvar"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

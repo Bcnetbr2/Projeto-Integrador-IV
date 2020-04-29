@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/VerdeDinheiro"
+    android:orientation="vertical"
+    tools:context=".Categorias">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/tgHome"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="65dp"
+            android:background="@drawable/toggle_background"
+            android:button="@drawable/home"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgReport"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/report"
+            android:button="@drawable/report"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgAdd"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/add"
+            android:button="@drawable/add"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgProfile"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/profile"
+            android:button="@drawable/profile"
+            android:scrollbars="none"
+            android:text="" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="Dados pessoais"
+        android:textColor="@color/AmareloOuro"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btnBanco"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+
+        android:fontFamily="@font/montserrat"
+        android:text="Banco/Fatura"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btnLuz"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:layout_marginTop="20dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Conta de luz" />
+
+    <Button
+        android:id="@+id/btnAgua"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Conta de Agua"/>
+
+    <Button
+        android:id="@+id/btnGas"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Conta de gás"/>
+
+    <Button
+        android:id="@+id/btnSuper"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Supermecado" />
+
+    <Button
+        android:id="@+id/btnEstudos"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Estudos"/>
+
+    <Button
+        android:id="@+id/btnOperadora"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalamarelo"
+        android:fontFamily="@font/montserrat"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:text="Operadora" />
+
+    <Button
+        android:id="@+id/btnAdicionarMais"
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="300dp"
+
+
+        android:layout_marginTop="50dp"
+        android:background="@drawable/botao_adicionar"
+        android:hapticFeedbackEnabled="true"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="+"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+</LinearLayout>

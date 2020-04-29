@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/AmareloOuro"
+    android:orientation="vertical"
+    >
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Cadastro"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtRecebeNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="Nome"
+                android:inputType="textPersonName"
+                android:textColorHint="#616060" />
+
+            <EditText
+                android:id="@+id/edtRecebeEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="E-mail"
+                android:inputType="textPersonName"
+                android:textColorHint="#616060" />
+
+            <EditText
+                android:id="@+id/edtTelefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="Telefone"
+                android:inputType="textPersonName"
+                android:textColorHint="#616060" />
+
+            <EditText
+                android:id="@+id/edtRenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="Renda mensal"
+                android:inputType="textPersonName"
+                android:textColorHint="#616060" />
+
+            <EditText
+                android:id="@+id/edtSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:hint="Senha"
+                android:inputType="textPassword"
+                android:textColorHint="#616060" />
+
+            <EditText
+                android:id="@+id/edtConfirmeSenha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="60dp"
+                android:ems="10"
+                android:hint="Confirme a senha"
+                android:inputType="textPassword"
+                android:textColorHint="#616060" />
+
+            <Button
+                android:id="@+id/btnFinalizarCadastro"
+
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="60dp"
+
+
+                android:layout_marginTop="60dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/buttonprincipalverde"
+                android:fontFamily="@font/montserrat"
+                android:text="Continuar"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvJaTemCadastro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="60dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="Já possuo cadastro"
+                android:textColor="@color/VerdeDinheiro"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

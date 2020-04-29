@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/VerdeDinheiro"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/tgHome"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/toggle_background"
+            android:button="@drawable/home"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgReport"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/report"
+            android:button="@drawable/report"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgAdd"
+            android:layout_width="55dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/add"
+            android:button="@drawable/add"
+            android:scrollbars="none"
+            android:text="" />
+
+        <ToggleButton
+            android:id="@+id/tgProfile"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_gravity="clip_horizontal"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/profile"
+            android:button="@drawable/profile"
+            android:scrollbars="none"
+            android:text="" />
+
+    </LinearLayout>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:dividerPadding="@dimen/cardview_default_radius">
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Ultimos gastos"
+            android:textAlignment="center"
+            android:textColor="@color/AmareloOuro"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="@color/AmareloOuro"
+            android:filterTouchesWhenObscured="false" />
+    </LinearLayout>
+
+</ScrollView>
+
+</LinearLayout>
