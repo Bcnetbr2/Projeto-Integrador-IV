@@ -44,19 +44,8 @@
         android:inputType="textPassword"
         android:textColorHint="#616060" />
 
-    <TextView
-        android:id="@+id/tvEsqueciSenha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="60dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Esqueci minha senha"
-        android:textColor="@color/VerdeDinheiro"
-        android:textSize="12sp" />
-
     <Button
-        android:id="@+id/btnSalvarDados"
+        android:id="@+id/btnAdicionarFornecedor"
 
         android:layout_width="match_parent"
         android:layout_height="45dp"

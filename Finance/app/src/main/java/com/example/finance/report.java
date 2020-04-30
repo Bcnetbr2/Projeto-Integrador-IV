@@ -11,7 +11,6 @@ public class report extends Activity implements View.OnClickListener{
 
     ToggleButton tgHome;
     ToggleButton tgAdicionar;
-    ToggleButton tgReport;
     ToggleButton tgProfile;
     Button btnFiltro;
 
@@ -30,9 +29,6 @@ public class report extends Activity implements View.OnClickListener{
         tgAdicionar = (ToggleButton) findViewById(R.id.tgAdd);
         tgAdicionar.setOnClickListener(this);
 
-        tgReport = (ToggleButton) findViewById(R.id.tgReport);
-        tgReport.setOnClickListener(this);
-
         tgProfile = (ToggleButton) findViewById(R.id.tgProfile);
         tgProfile.setOnClickListener(this);
 
@@ -44,9 +40,6 @@ public class report extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         if (v == tgAdicionar){
             entrarAdicionar();
-        }
-        else if (v == tgReport){
-            entrarReport();
         }
         else if (v == tgProfile){
             entrarProfile();
@@ -61,13 +54,8 @@ public class report extends Activity implements View.OnClickListener{
     }
 
     private void entrarAdicionar(){
-        Intent adicionar = new Intent(this, Categorias.class);
-        startActivity(adicionar);
-    }
-
-    private void entrarReport(){
-        Intent report = new Intent(this, report.class);
-        startActivity(report);
+        Intent lancamento = new Intent(this, Lancamento.class);
+        startActivity(lancamento);
     }
 
     private void entrarProfile(){

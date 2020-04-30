@@ -1,7 +1,6 @@
 package com.example.finance;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,15 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.content.ContentValues.TAG;
-
 public class login extends Activity implements View.OnClickListener {
 
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
-    TextView tvEsqueciSenha;
     TextView tvSemConta;
     EditText edtEmail;
     EditText edtSenha;
@@ -35,8 +31,7 @@ public class login extends Activity implements View.OnClickListener {
 
     private void variaveis(){
 
-        tvEsqueciSenha = (TextView) findViewById(R.id.tvEsqueciSenha);
-        tvEsqueciSenha.setOnClickListener(this);
+
 
         tvSemConta = (TextView) findViewById(R.id.tvSemConta);
         tvSemConta.setOnClickListener(this);
@@ -45,27 +40,20 @@ public class login extends Activity implements View.OnClickListener {
 
         edtSenha = (EditText) findViewById(R.id.edtSenha);
 
-        btnFinalizarLogin = (Button) findViewById(R.id.btnSalvarDados);
+        btnFinalizarLogin = (Button) findViewById(R.id.btnAdicionarFornecedor);
         btnFinalizarLogin.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v == tvEsqueciSenha){
-            esqueciSenha();
-        }
-        else if (v == tvSemConta){
+
+         if (v == tvSemConta){
             naoTemCadastro();
         }
         else if (v == btnFinalizarLogin){
             login();
         }
 
-    }
-
-    private void esqueciSenha(){
-        Intent esquecisenha = new Intent(this, EsqueciSenha.class);
-        startActivity(esquecisenha);
     }
 
     private void naoTemCadastro(){

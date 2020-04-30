@@ -18,14 +18,15 @@
         </activity>
         <activity android:name=".login"/>
         <activity android:name=".register"/>
-        <activity android:name=".EsqueciSenha"/>
         <activity android:name=".principal"/>
         <activity android:name=".profile"/>
         <activity android:name=".report"/>
-        <activity android:name=".Categorias"/>
-        <activity android:name=".AdicionarCategoria"
+        <activity android:name=".AdicionarCategorias"
             android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".Lancamento"/>
         <activity android:name=".Filtro"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".Fornecedor"
             android:theme="@style/Theme.AppCompat.Dialog"/>
 
         <meta-data

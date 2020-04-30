@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/AmareloOuro"
+    android:orientation="vertical"
+    tools:context=".Fornecedor">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Adicionar Fornecedor"
+        android:textAlignment="center"
+        android:textColor="@color/VerdeDinheiro"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edtNomeFornecedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Nome"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/edtEmailFornecedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="E-mail do fornecedor"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/edtTelefoneFornecedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:hint="Telefone do Fornecedor"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/edtUfFornecedor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="50dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="UF"
+        android:inputType="textMultiLine" />
+
+    <Button
+        android:id="@+id/btnAdicionarFornecedor"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="50dp"
+
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/buttonprincipalverde"
+        android:fontFamily="@font/montserrat"
+        android:text="Adicionar"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+</LinearLayout>

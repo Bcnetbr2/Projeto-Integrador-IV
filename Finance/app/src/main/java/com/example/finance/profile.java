@@ -14,7 +14,7 @@ public class profile extends Activity implements View.OnClickListener{
     ToggleButton tgHome;
     ToggleButton tgAdicionar;
     ToggleButton tgReport;
-    ToggleButton tgProfile;
+
 
     EditText edtRecebeNome;
     EditText edtRecebeEmail;
@@ -44,9 +44,6 @@ public class profile extends Activity implements View.OnClickListener{
         tgReport = (ToggleButton) findViewById(R.id.tgReport);
         tgReport.setOnClickListener(this);
 
-        tgProfile = (ToggleButton) findViewById(R.id.tgProfile);
-        tgProfile.setOnClickListener(this);
-
         edtRecebeNome = (EditText) findViewById(R.id.edtRecebeNome);
         edtRecebeEmail = (EditText) findViewById(R.id.edtRecebeEmail);
         edtRecebeTele = (EditText) findViewById(R.id.edtRecebeTele);
@@ -55,7 +52,7 @@ public class profile extends Activity implements View.OnClickListener{
         edtSenhaNova = (EditText) findViewById(R.id.edtSenhaNova);
         edtCofirmaNovaSenha = (EditText) findViewById(R.id.edtConfirmacaoSenha);
 
-        btnSalvarDados = (Button) findViewById(R.id.btnSalvarDados);
+        btnSalvarDados = (Button) findViewById(R.id.btnAdicionarFornecedor);
         btnSalvarDados.setOnClickListener(this);
     }
 
@@ -67,9 +64,7 @@ public class profile extends Activity implements View.OnClickListener{
         else if (v == tgReport){
             entrarReport();
         }
-        else if (v == tgProfile){
-            entrarProfile();
-        }
+
         else if (v == tgHome){
             entrarHome();
         }
@@ -80,8 +75,8 @@ public class profile extends Activity implements View.OnClickListener{
     }
 
     private void entrarAdicionar(){
-        Intent adicionar = new Intent(this, Categorias.class);
-        startActivity(adicionar);
+        Intent lancamento = new Intent(this, Lancamento.class);
+        startActivity(lancamento);
     }
 
     private void entrarReport(){
@@ -89,10 +84,7 @@ public class profile extends Activity implements View.OnClickListener{
         startActivity(report);
     }
 
-    private void entrarProfile(){
-        Intent profile = new Intent(this, profile.class);
-        startActivity(profile);
-    }
+
     private void entrarHome(){
         Intent home = new Intent(this, principal.class);
         startActivity(home);

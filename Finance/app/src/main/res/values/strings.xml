@@ -3,4 +3,8 @@
     <string name="Relatorio">Relatorio</string>
     <string name="Adicionar">Adicionar</string>
     <string name="Perfil">Perfil</string>
+    <string-array name="tipo">
+        <item>Gasto</item>
+        <item>Investimento</item>
+    </string-array>
 </resources>

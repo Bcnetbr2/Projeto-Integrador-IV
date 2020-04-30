@@ -54,8 +54,8 @@ public class principal extends AppCompatActivity implements View.OnClickListener
     }
 
     private void entrarAdicionar(){
-        Intent adicionar = new Intent(this, Categorias.class);
-        startActivity(adicionar);
+        Intent adicionarCategoria = new Intent(this, Lancamento.class);
+        startActivity(adicionarCategoria);
     }
 
     private void entrarReport(){

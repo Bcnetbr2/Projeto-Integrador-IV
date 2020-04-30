@@ -85,7 +85,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/montserrat"
             android:text="Nome"
-            android:textColor="@color/Preto" />
+            android:textColor="@color/Branco" />
 
         <EditText
             android:id="@+id/edtRecebeNome"
@@ -101,7 +101,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/montserrat"
             android:text="Email"
-            android:textColor="@color/Preto" />
+            android:textColor="@color/Branco" />
 
         <EditText
             android:id="@+id/edtRecebeEmail"
@@ -117,7 +117,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/montserrat"
             android:text="Telefone"
-            android:textColor="@color/Preto" />
+            android:textColor="@color/Branco" />
 
         <EditText
             android:id="@+id/edtRecebeTele"
@@ -133,7 +133,7 @@
             android:layout_marginBottom="5dp"
             android:fontFamily="@font/montserrat"
             android:text="Renda"
-            android:textColor="@color/Preto" />
+            android:textColor="@color/Branco" />
 
         <EditText
             android:id="@+id/edtRecebeRenda"
@@ -167,7 +167,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/btnSalvarDados"
+            android:id="@+id/btnAdicionarFornecedor"
 
             android:layout_width="match_parent"
             android:layout_height="45dp"

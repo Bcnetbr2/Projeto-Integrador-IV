@@ -82,11 +82,6 @@ public class register extends Activity implements View.OnClickListener {
 
         btnFinalizarCadastro.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(register.this,
-                R.style.Theme_AppCompat_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
 
         String name = edtNome.getText().toString();
         String email = edtEmail.getText().toString();
@@ -96,16 +91,7 @@ public class register extends Activity implements View.OnClickListener {
 
         // TODO: Implement your own signup logic here.
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+
     }
 
 
