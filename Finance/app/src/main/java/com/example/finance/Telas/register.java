@@ -1,7 +1,6 @@
-package com.example.finance;
+package com.example.finance.Telas;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.finance.R;
 
 public class register extends Activity implements View.OnClickListener {
     private static final String TAG = "SignupActivity";

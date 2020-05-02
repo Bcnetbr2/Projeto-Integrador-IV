@@ -1,4 +1,4 @@
-package com.example.finance;
+package com.example.finance.Telas;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.example.finance.R;
 
 public class Lancamento extends Activity implements View.OnClickListener{
 

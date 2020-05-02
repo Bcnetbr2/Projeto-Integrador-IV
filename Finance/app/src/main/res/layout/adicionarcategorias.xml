@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AmareloOuro"
     android:orientation="vertical"
-    tools:context=".AdicionarCategorias">
+    tools:context=".Telas.AdicionarCategorias">
 
     <TextView
         android:id="@+id/textView2"

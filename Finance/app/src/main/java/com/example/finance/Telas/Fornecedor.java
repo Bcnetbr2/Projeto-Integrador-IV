@@ -1,4 +1,4 @@
-package com.example.finance;
+package com.example.finance.Telas;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.finance.R;
 
 public class Fornecedor extends Activity implements View.OnClickListener{
 

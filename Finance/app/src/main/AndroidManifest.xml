@@ -9,24 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".Entrada">
+        <activity android:name=".Telas.Entrada">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login"/>
-        <activity android:name=".register"/>
-        <activity android:name=".principal"/>
-        <activity android:name=".profile"/>
-        <activity android:name=".report"/>
-        <activity android:name=".AdicionarCategorias"
+        <activity android:name=".Telas.login"/>
+        <activity android:name=".Telas.register"/>
+        <activity android:name=".Telas.principal"/>
+        <activity android:name=".Telas.profile"/>
+        <activity android:name=".Telas.report"/>
+        <activity android:name=".Telas.AdicionarCategorias"
             android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".Lancamento"/>
-        <activity android:name=".Filtro"
+        <activity android:name=".Telas.Lancamento"/>
+        <activity android:name=".Telas.Filtro"
             android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".Fornecedor"
+        <activity android:name=".Telas.Fornecedor"
             android:theme="@style/Theme.AppCompat.Dialog"/>
 
         <meta-data
