@@ -4,20 +4,20 @@ import java.util.Date;
 
 public class Lancamento {
 
-    private int id;
+    private long id;
     private Categoria categoria;
     private Fornecedor fornecedor;
     private Usuario usuario;
     private String tipo;
     private Date data;
     private Float valor;
-    private String descricacao;
+    private String descricao;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -69,11 +69,11 @@ public class Lancamento {
         this.valor = valor;
     }
 
-    public String getDescricacao() {
-        return descricacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricacao(String descricacao) {
-        this.descricacao = descricacao;
+    public void setDescricao(String descricacao) {
+        this.descricao = descricacao;
     }
 }

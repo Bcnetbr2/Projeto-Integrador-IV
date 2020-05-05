@@ -46,9 +46,9 @@ public class ScriptBD {
         sql.append("     id_categoria    INTEGER,");
         sql.append("     id_fornecedor   INETGER,");
         sql.append("     tipo            VARCHAR (20),");
-        sql.append("     data            DATETIME,");
+        sql.append("     data            DATE,");
         sql.append("     valor           REAL,");
-        sql.append("     descricacao     VARCHAR (50),");
+        sql.append("     descricao     VARCHAR (50),");
         sql.append("FOREIGN KEY(id_usuario) REFERENCES usuario(id)");
         sql.append("FOREIGN KEY(id_categoria) REFERENCES categoria(id)");
         sql.append("FOREIGN KEY(id_fornecedor) REFERENCES fornecedor(id));");

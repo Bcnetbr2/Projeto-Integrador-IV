@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 public class Categoria implements Serializable {
 
-    private int id;
-    private String descricacao;
+    private long id;
+    private String descricao;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getDescricacao() {
-        return descricacao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricacao(String descricacao) {
-        this.descricacao = descricacao;
+    public void setDescricao(String descricacao) {
+        this.descricao = descricacao;
     }
 }

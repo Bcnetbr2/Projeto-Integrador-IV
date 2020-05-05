@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Fornecedor implements Serializable {
 
-    private int id;
+    private long id;
     private String nome;
     private String telefone;
     private String email;
     private String uf;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
