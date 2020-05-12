@@ -14,7 +14,7 @@ import java.util.List;
 public class CategoriaDao {
 
     private final String TABELA = "categoria";
-    private final String[] CAMPOS = {"id","nome"};
+    private final String[] CAMPOS = {"id","id_usuario","nome"};
     private Conexao conexao;
     private SQLiteDatabase finance;
 

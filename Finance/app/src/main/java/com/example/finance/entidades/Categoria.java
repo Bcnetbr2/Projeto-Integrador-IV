@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Categoria implements Serializable {
 
     private long id;
+    private Usuario usuario;
     private String descricao;
 
     public long getId() {
@@ -13,6 +14,14 @@ public class Categoria implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getDescricao() {

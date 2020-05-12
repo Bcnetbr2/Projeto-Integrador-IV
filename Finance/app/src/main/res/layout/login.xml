@@ -45,7 +45,7 @@
         android:textColorHint="#616060" />
 
     <Button
-        android:id="@+id/btnAdicionarFornecedor"
+        android:id="@+id/btnFinalizarLogin"
 
         android:layout_width="match_parent"
         android:layout_height="45dp"

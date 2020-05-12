@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Finance"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
@@ -16,11 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Telas.login"/>
-        <activity android:name=".Telas.register"/>
-        <activity android:name=".Telas.principal"/>
-        <activity android:name=".Telas.profile"/>
-        <activity android:name=".Telas.report"/>
+        <activity android:name=".Telas.Login"/>
+        <activity android:name=".Telas.Register"/>
+        <activity android:name=".Telas.Principal"/>
+        <activity android:name=".Telas.Profile"/>
+        <activity android:name=".Telas.Report"/>
         <activity android:name=".Telas.AdicionarCategorias"
             android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity android:name=".Telas.Lancamento"/>

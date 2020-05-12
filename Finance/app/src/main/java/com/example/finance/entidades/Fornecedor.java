@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Fornecedor implements Serializable {
 
     private long id;
+    private Usuario usuario;
     private String nome;
     private String telefone;
     private String email;
@@ -16,6 +17,14 @@ public class Fornecedor implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getNome() {

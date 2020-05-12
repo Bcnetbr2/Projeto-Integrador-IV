@@ -11,8 +11,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finance.R;
+import com.example.finance.configDaos.UsuarioDao;
+import com.example.finance.entidades.Usuario;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
-public class register extends Activity implements View.OnClickListener {
+public class Register extends Activity implements View.OnClickListener {
     private static final String TAG = "SignupActivity";
 
     EditText edtNome;
@@ -24,6 +28,9 @@ public class register extends Activity implements View.OnClickListener {
     Button btnFinalizarCadastro;
     EditText edtConfirmeSenha;
 
+    UsuarioDao usuarioDao;
+    Usuario usuario;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,17 @@ public class register extends Activity implements View.OnClickListener {
         setContentView(R.layout.register);
 
         variaveis();
+
+        if(getIntent().getExtras().getSerializable("us") != null){
+
+            usuario = (Usuario)getIntent().getExtras().getSerializable("us");
+            edtNome.setText(usuario.getLogin());
+            edtEmail.setText(usuario.getEmail());
+            edtTelefone.setText(usuario.getFone());
+            edtSenha.setText(usuario.getSenha());
+            edtRenda.setText(String.valueOf(usuario.getRenda()));
+
+        }
 
     }
 
@@ -49,6 +67,13 @@ public class register extends Activity implements View.OnClickListener {
         btnFinalizarCadastro = (Button) findViewById(R.id.btnFinalizarCadastro);
         btnFinalizarCadastro.setOnClickListener(this);
 
+        usuarioDao = new UsuarioDao(this);
+        //usuario = new Usuario();
+
+        SimpleMaskFormatter FormatarFone = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+        MaskTextWatcher MascaraFone = new MaskTextWatcher(edtTelefone, FormatarFone);
+        edtTelefone.addTextChangedListener(MascaraFone);
+
     }
 
     @Override
@@ -64,7 +89,7 @@ public class register extends Activity implements View.OnClickListener {
     }
 
     private void jaTemCadastro(){
-        Intent jatemcadastro = new Intent(this, login.class);
+        Intent jatemcadastro = new Intent(this, Login.class);
         startActivity(jatemcadastro);
     }
 
@@ -76,24 +101,33 @@ public class register extends Activity implements View.OnClickListener {
             onSignupFailed();
             return;
         }
-        else{
-            Intent finalizarcadastro = new Intent(this, principal.class);
+        else if(validate()){
+
+            usuario.setLogin(edtNome.getText().toString());
+            usuario.setEmail(edtEmail.getText().toString());
+            usuario.setFone(edtTelefone.getText().toString());
+            usuario.setSenha(edtSenha.getText().toString());
+            usuario.setRenda(Float.parseFloat(edtRenda.getText().toString()));
+
+            long id = usuarioDao.inserir(usuario);
+            Toast.makeText(this,"O usuario: " + usuario.getLogin() + "foi inseriodo com o id: " + id,Toast.LENGTH_LONG).show();
+
+            Intent finalizarcadastro = new Intent(this, Principal.class);
             startActivity(finalizarcadastro);
         }
 
         btnFinalizarCadastro.setEnabled(false);
 
 
-        String name = edtNome.getText().toString();
-        String email = edtEmail.getText().toString();
-        String mobile = edtTelefone.getText().toString();
-        String password = edtSenha.getText().toString();
-        String reEnterPassword = edtConfirmeSenha.getText().toString();
+
+
 
         // TODO: Implement your own signup logic here.
 
 
     }
+
+
 
 
     public void onSignupSuccess() {
@@ -131,7 +165,7 @@ public class register extends Activity implements View.OnClickListener {
             edtEmail.setError(null);
         }
 
-        if (mobile.isEmpty() || mobile.length()!=11) {
+        if (mobile.isEmpty() || mobile.length()!=14) {
             edtTelefone.setError("Entre com um numero de telefone valido, com DDD");
             valid = false;
         } else {

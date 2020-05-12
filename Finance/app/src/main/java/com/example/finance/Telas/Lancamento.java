@@ -99,12 +99,12 @@ public class Lancamento extends Activity implements View.OnClickListener{
 
 
     private void entrarReport(){
-        Intent report = new Intent(this, report.class);
+        Intent report = new Intent(this, Report.class);
         startActivity(report);
     }
 
     private void entrarProfile(){
-        Intent profile = new Intent(this, profile.class);
+        Intent profile = new Intent(this, Profile.class);
         startActivity(profile);
     }
     private void entrarFornecedor(){
@@ -113,7 +113,7 @@ public class Lancamento extends Activity implements View.OnClickListener{
     }
 
     private void entrarHome(){
-        Intent home = new Intent(this, principal.class);
+        Intent home = new Intent(this, Principal.class);
         startActivity(home);
     }
     private void adicionarLancamento(){

@@ -11,7 +11,7 @@ import android.widget.ToggleButton;
 
 import com.example.finance.R;
 
-public class profile extends Activity implements View.OnClickListener{
+public class Profile extends Activity implements View.OnClickListener{
 
     ToggleButton tgHome;
     ToggleButton tgAdicionar;
@@ -82,13 +82,13 @@ public class profile extends Activity implements View.OnClickListener{
     }
 
     private void entrarReport(){
-        Intent report = new Intent(this, report.class);
+        Intent report = new Intent(this, Report.class);
         startActivity(report);
     }
 
 
     private void entrarHome(){
-        Intent home = new Intent(this, principal.class);
+        Intent home = new Intent(this, Principal.class);
         startActivity(home);
     }
     private void salvarDados(){

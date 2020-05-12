@@ -1,30 +1,26 @@
 package com.example.finance.Telas;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ToggleButton;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finance.R;
 
-public class principal extends AppCompatActivity implements View.OnClickListener{
+public class Report extends Activity implements View.OnClickListener{
 
     ToggleButton tgHome;
     ToggleButton tgAdicionar;
-    ToggleButton tgReport;
     ToggleButton tgProfile;
-
-
+    Button btnFiltro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.principal);
-
+        setContentView(R.layout.relatorio);
         variaveis();
-
 
 }
 
@@ -35,38 +31,41 @@ public class principal extends AppCompatActivity implements View.OnClickListener
         tgAdicionar = (ToggleButton) findViewById(R.id.tgAdd);
         tgAdicionar.setOnClickListener(this);
 
-        tgReport = (ToggleButton) findViewById(R.id.tgReport);
-        tgReport.setOnClickListener(this);
-
         tgProfile = (ToggleButton) findViewById(R.id.tgProfile);
         tgProfile.setOnClickListener(this);
-}
+
+        btnFiltro = (Button) findViewById(R.id.btnFiltro);
+        btnFiltro.setOnClickListener(this);
+    }
 
     @Override
     public void onClick(View v) {
         if (v == tgAdicionar){
             entrarAdicionar();
         }
-        else if (v == tgReport){
-            entrarReport();
-            }
         else if (v == tgProfile){
             entrarProfile();
+        }
+        else if (v == tgHome){
+            entrarHome();
+        }
+        else if (v == btnFiltro){
+            Intent filtro = new Intent(this, Filtro.class);
+            startActivity(filtro);
         }
     }
 
     private void entrarAdicionar(){
-        Intent adicionarCategoria = new Intent(this, Lancamento.class);
-        startActivity(adicionarCategoria);
-    }
-
-    private void entrarReport(){
-        Intent report = new Intent(this, report.class);
-        startActivity(report);
+        Intent lancamento = new Intent(this, Lancamento.class);
+        startActivity(lancamento);
     }
 
     private void entrarProfile(){
-        Intent profile = new Intent(this, profile.class);
+        Intent profile = new Intent(this, Profile.class);
         startActivity(profile);
+    }
+    private void entrarHome(){
+        Intent home = new Intent(this, Principal.class);
+        startActivity(home);
     }
 }

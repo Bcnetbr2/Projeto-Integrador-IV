@@ -6,13 +6,29 @@ import java.util.Date;
 
 public class ConverterData {
 
-    public Date converter(long dataRecebida) throws ParseException {
+    public Date converterLongData(long dataRecebida){
 
-        Date data = new Date(dataRecebida*1000);
+        Date data = new Date(dataRecebida);
 
         return data;
 
 
+    }
+
+    public String formataData(Date data){
+
+        SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String dataFormat = formatar.format(data);
+
+        return dataFormat;
+
+    }
+
+    public Long formataDataLong(Date data){
+
+        long dataLong = data.getTime();
+
+        return dataLong;
     }
 
 }

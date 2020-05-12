@@ -1,6 +1,8 @@
 package com.example.finance.entidades;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 
     private long id;
     private String login;
@@ -55,5 +57,16 @@ public class Usuario {
 
     public void setRenda(float renda) {
         this.renda = renda;
+    }
+
+    public String imprimir() {
+        return "Usuario{" +
+                "id=" + id +
+                ", Login='" + login + '\'' +
+                ", senha='" + senha + '\'' +
+                ", email='" + email + '\'' +
+                ", fone='" + fone + '\'' +
+                ", renda=" + renda +
+                '}';
     }
 }

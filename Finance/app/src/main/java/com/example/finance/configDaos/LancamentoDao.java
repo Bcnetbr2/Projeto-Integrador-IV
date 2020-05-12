@@ -19,6 +19,7 @@ public class LancamentoDao {
     private final String[] CAMPOS = {"id","id_usuario","id_categoria","id_fornecedor","tipo","data","valor","descricao"};
     private Conexao conexao;
     private SQLiteDatabase finance;
+    ConverterData dt = new ConverterData();
 
     public LancamentoDao(Context context){
 
@@ -36,7 +37,7 @@ public class LancamentoDao {
         values.put("id_categoria", lancamento.getCategoria().getId());
         values.put("id_fornecedor", lancamento.getFornecedor().getId());
         values.put("tipo", lancamento.getTipo());
-        values.put("data", lancamento.getData().getTime());
+        values.put("data", dt.formataDataLong(lancamento.getData()));
         values.put("valor", lancamento.getValor());
         values.put("descricao", lancamento.getDescricao());
 
@@ -77,7 +78,7 @@ public class LancamentoDao {
             lancamento.getCategoria().setId(c.getLong(2));
             lancamento.getFornecedor().setId(c.getLong(3));
             lancamento.setTipo(c.getString(4));
-            lancamento.setData(converterData.converter(c.getLong(5)));
+            lancamento.setData(dt.converterLongData(c.getLong(5)));
             lancamento.setValor(c.getFloat(6));
             lancamento.setDescricao(c.getString(7));
 

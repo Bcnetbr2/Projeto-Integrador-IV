@@ -13,8 +13,8 @@ import java.util.List;
 
 public class UsuarioDao {
 
-    private final String TABELA = "cliente";
-    private final String[] CAMPOS = {"id","login","senha","email","fone","renda"};
+    private final String TABELA = "usuario";
+    private final String[] CAMPOS = {"id","Login","senha","email","fone","renda"};
     private Conexao conexao;
     private SQLiteDatabase finance;
 
@@ -29,7 +29,7 @@ public class UsuarioDao {
 
         ContentValues values = new ContentValues();
 
-        values.put("login", usuario.getLogin());
+        values.put("Login", usuario.getLogin());
         values.put("senha", usuario.getSenha());
         values.put("email", usuario.getEmail());
         values.put("fone", usuario.getFone());

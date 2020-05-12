@@ -11,8 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finance.R;
+import com.example.finance.entidades.Usuario;
 
-public class login extends Activity implements View.OnClickListener {
+public class Login extends Activity implements View.OnClickListener {
 
 
     private static final String TAG = "LoginActivity";
@@ -42,7 +43,7 @@ public class login extends Activity implements View.OnClickListener {
 
         edtSenha = (EditText) findViewById(R.id.edtSenha);
 
-        btnFinalizarLogin = (Button) findViewById(R.id.btnAdicionarFornecedor);
+        btnFinalizarLogin = (Button) findViewById(R.id.btnFinalizarLogin);
         btnFinalizarLogin.setOnClickListener(this);
     }
 
@@ -50,7 +51,13 @@ public class login extends Activity implements View.OnClickListener {
     public void onClick(View v) {
 
          if (v == tvSemConta){
-            naoTemCadastro();
+
+             Usuario us = new Usuario();
+             us.setId(0L);
+
+            naoTemCadastro(us);
+
+
         }
         else if (v == btnFinalizarLogin){
             login();
@@ -58,13 +65,17 @@ public class login extends Activity implements View.OnClickListener {
 
     }
 
-    private void naoTemCadastro(){
-        Intent naotemcadastro = new Intent(this, register.class);
+    private void naoTemCadastro(Usuario obj){
+        Intent naotemcadastro = new Intent(this, Register.class);
+        Bundle extras = new Bundle();
+        extras.putSerializable("us",obj);
+        naotemcadastro.putExtras(extras);
+
         startActivity(naotemcadastro);
     }
 
     private void finalizarLogin(){
-        Intent finalizarlogin = new Intent(this, principal.class);
+        Intent finalizarlogin = new Intent(this, Principal.class);
         startActivityForResult(finalizarlogin, REQUEST_SIGNUP);
         finish();
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -78,7 +89,7 @@ public class login extends Activity implements View.OnClickListener {
                 return;
             }
             else{
-                Intent finalizarlogin = new Intent(this, principal.class);
+                Intent finalizarlogin = new Intent(this, Principal.class);
                 startActivityForResult(finalizarlogin, REQUEST_SIGNUP);
                 finish();
                 overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
