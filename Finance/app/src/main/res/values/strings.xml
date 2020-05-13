@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Finance</string>
     <string name="Home">Home</string>
     <string name="Relatorio">Relatorio</string>
     <string name="Adicionar">Adicionar</string>

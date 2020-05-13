@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/AmareloOuro"
     android:orientation="vertical"
-    tools:context=".Telas.Fornecedor">
+    tools:context=".Telas.AdicionarFornecedor">
 
     <TextView
         android:id="@+id/textView2"

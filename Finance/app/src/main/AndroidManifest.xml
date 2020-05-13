@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Telas.Entrada">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Telas.Login"/>
         <activity android:name=".Telas.Register"/>
@@ -26,8 +22,17 @@
         <activity android:name=".Telas.Lancamento"/>
         <activity android:name=".Telas.Filtro"
             android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".Telas.Fornecedor"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".Telas.AdicionarFornecedor"
+            android:theme="@style/Theme.AppCompat.Dialog">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

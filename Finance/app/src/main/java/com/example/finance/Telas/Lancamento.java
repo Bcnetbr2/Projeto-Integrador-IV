@@ -108,7 +108,7 @@ public class Lancamento extends Activity implements View.OnClickListener{
         startActivity(profile);
     }
     private void entrarFornecedor(){
-        Intent profile = new Intent(this, Fornecedor.class);
+        Intent profile = new Intent(this, AdicionarFornecedor.class);
         startActivity(profile);
     }
 

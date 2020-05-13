@@ -14,7 +14,7 @@ import java.util.List;
 public class FornecedorDao {
 
     private final String TABELA = "fornecedor";
-    private final String[] CAMPOS = {"id","id_usuario","nome","Telefone","email","UF"};
+    private final String[] CAMPOS = {"id","nome","Telefone","email","UF"};
     private Conexao conexao;
     private SQLiteDatabase finance;
 

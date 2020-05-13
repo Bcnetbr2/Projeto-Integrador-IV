@@ -2,26 +2,45 @@ package com.example.finance.Telas;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.finance.R;
+import com.example.finance.configDaos.FornecedorDao;
+import com.example.finance.entidades.Fornecedor;
 
-public class Fornecedor extends Activity implements View.OnClickListener{
+import java.util.List;
+
+public class AdicionarFornecedor extends Activity implements View.OnClickListener{
 
     EditText edtNomeFornecedor;
     EditText edtEmailFornecedor;
     EditText edtTelefoneFornecedor;
     EditText edtUfFornecedor;
+
     Button btnAdicionarFornecedor;
+
+    Fornecedor fornecedor;
+    FornecedorDao fornecedorDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fornecedor);
+
         variaveis();
+        List<Fornecedor> lista = fornecedorDao.listar();
+
+        for ( Fornecedor f:lista) {
+
+            Log.e("fornecedor", f.getNome().toString());
+
+        }
+
+
 }
 
 private void variaveis(){
@@ -34,6 +53,11 @@ private void variaveis(){
     btnAdicionarFornecedor = (Button) findViewById(R.id.btnAdicionarFornecedor);
     btnAdicionarFornecedor.setOnClickListener(this);
 
+    fornecedor = new Fornecedor();
+    fornecedorDao = new FornecedorDao(this);
+
+
+
 }
 
     @Override
@@ -44,7 +68,15 @@ private void variaveis(){
     }
 
     private void adicionarFornecedor(){
-        Toast.makeText(this, "Fornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
+
+        fornecedor.setNome(edtNomeFornecedor.getText().toString());
+        fornecedor.setTelefone(edtTelefoneFornecedor.getText().toString());
+        fornecedor.setEmail(edtEmailFornecedor.getText().toString());
+        fornecedor.setUf(edtUfFornecedor.getText().toString());
+
+        long id = fornecedorDao.inserir(fornecedor);
+
+        Toast.makeText(this, "AdicionarFornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
     }
 }
 

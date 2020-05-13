@@ -7,9 +7,8 @@ public class ScriptBD {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS categoria ( ");
         sql.append("     id         INTEGER      PRIMARY KEY AUTOINCREMENT,");
-        sql.append("     id_usuario      INTEGER,");
-        sql.append("     nome       VARCHAR (50),");
-        sql.append("FOREIGN KEY(id_usuario) REFERENCES usuario(id));");
+        sql.append("     nome       VARCHAR (50));");
+
 
         return sql.toString();
     }
@@ -18,12 +17,10 @@ public class ScriptBD {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE  IF NOT EXISTS  fornecedor( ");
         sql.append("     id             INTEGER      PRIMARY KEY AUTOINCREMENT,");
-        sql.append("     id_usuario     INTEGER,");
         sql.append("     nome           VARCHAR (50),");
         sql.append("     telefone       VARCHAR (20),");
         sql.append("     email          VARCHAR (50),");
-        sql.append("     UF             VARCHAR (2),");
-        sql.append("FOREIGN KEY(id_usuario) REFERENCES usuario(id));");
+        sql.append("     UF             VARCHAR (2));");
 
         return sql.toString();
 
