@@ -13,23 +13,30 @@
 
         </activity>
         <activity android:name=".Telas.Login"/>
-        <activity android:name=".Telas.Register"/>
+        <activity android:name=".Telas.Register">
+
+        </activity>
         <activity android:name=".Telas.Principal"/>
         <activity android:name=".Telas.Profile"/>
         <activity android:name=".Telas.Report"/>
         <activity android:name=".Telas.AdicionarCategorias"
             android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".Telas.Lancamento"/>
-        <activity android:name=".Telas.Filtro"
-            android:theme="@style/Theme.AppCompat.Dialog"/>
-        <activity android:name=".Telas.AdicionarFornecedor"
-            android:theme="@style/Theme.AppCompat.Dialog">
+        <activity android:name=".Telas.Lancamento">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
+        </activity>
+        <activity android:name=".Telas.Filtro"
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity android:name=".Telas.AdicionarFornecedor"
+            android:theme="@style/Theme.AppCompat.Dialog">
+
+
 
 
         </activity>

@@ -39,7 +39,7 @@ public class Register extends Activity implements View.OnClickListener {
 
         variaveis();
 
-        if(getIntent().getExtras().getSerializable("us") != null){
+        /*if(getIntent().getExtras().getSerializable("us") != null){
 
             usuario = (Usuario)getIntent().getExtras().getSerializable("us");
             edtNome.setText(usuario.getLogin());
@@ -48,7 +48,7 @@ public class Register extends Activity implements View.OnClickListener {
             edtSenha.setText(usuario.getSenha());
             edtRenda.setText(String.valueOf(usuario.getRenda()));
 
-        }
+        }*/
 
     }
 

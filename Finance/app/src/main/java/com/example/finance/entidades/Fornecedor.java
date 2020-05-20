@@ -49,4 +49,9 @@ public class Fornecedor implements Serializable {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

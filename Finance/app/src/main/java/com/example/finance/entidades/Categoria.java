@@ -23,4 +23,9 @@ public class Categoria implements Serializable {
     public void setDescricao(String descricacao) {
         this.descricao = descricacao;
     }
+
+    @Override
+    public String toString() {
+        return  descricao ;
+    }
 }
