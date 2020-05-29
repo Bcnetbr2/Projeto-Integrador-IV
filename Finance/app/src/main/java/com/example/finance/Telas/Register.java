@@ -103,6 +103,8 @@ public class Register extends Activity implements View.OnClickListener {
         }
         else if(validate()){
 
+            Usuario usuario = new Usuario();
+
             usuario.setLogin(edtNome.getText().toString());
             usuario.setEmail(edtEmail.getText().toString());
             usuario.setFone(edtTelefone.getText().toString());

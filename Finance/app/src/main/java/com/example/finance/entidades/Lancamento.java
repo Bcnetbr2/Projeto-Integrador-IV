@@ -1,8 +1,9 @@
 package com.example.finance.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Lancamento {
+public class Lancamento implements Serializable {
 
     private long id;
     private Categoria categoria;

@@ -83,7 +83,11 @@ public class Login extends Activity implements View.OnClickListener {
 
     private void finalizarLogin(){
         Intent finalizarlogin = new Intent(this, Principal.class);
-        startActivityForResult(finalizarlogin, REQUEST_SIGNUP);
+        Intent telaLancamento = new Intent(this, Lancamento.class);
+        Bundle extras = new Bundle();
+        extras.putSerializable("usuario",usuario);
+        telaLancamento.putExtras(extras);
+        startActivity(finalizarlogin);
         finish();
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
@@ -100,10 +104,11 @@ public class Login extends Activity implements View.OnClickListener {
 
                     finalizarLogin();
 
+
                 }
                 else{
 
-
+                    onLoginFailed();
 
                 }
             }

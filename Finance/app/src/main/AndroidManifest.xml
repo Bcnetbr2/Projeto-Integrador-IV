@@ -10,7 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Telas.Entrada">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Telas.Login"/>
         <activity android:name=".Telas.Register">
@@ -23,11 +27,7 @@
             android:theme="@style/Theme.AppCompat.Dialog"/>
         <activity android:name=".Telas.Lancamento">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
 
         </activity>
