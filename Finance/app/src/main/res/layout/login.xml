@@ -20,7 +20,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/edtRecebeEmail"
+        android:id="@+id/edtRecebeLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -28,8 +28,7 @@
         android:layout_marginRight="60dp"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="E-mail"
-        android:inputType="textPersonName"
+        android:hint="Login"
         android:textColorHint="#616060" />
 
     <EditText
@@ -73,4 +72,11 @@
         android:text="Não tem cadastrado?"
         android:textColor="@color/VerdeDinheiro"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
 </LinearLayout>

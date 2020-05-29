@@ -62,7 +62,7 @@ public class Usuario implements Serializable {
     public String imprimir() {
         return "Usuario{" +
                 "id=" + id +
-                ", Login='" + login + '\'' +
+                ", login='" + login + '\'' +
                 ", senha='" + senha + '\'' +
                 ", email='" + email + '\'' +
                 ", fone='" + fone + '\'' +

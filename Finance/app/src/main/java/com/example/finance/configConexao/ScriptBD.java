@@ -30,7 +30,7 @@ public class ScriptBD {
         StringBuilder sql = new StringBuilder();
         sql.append("CREATE TABLE IF NOT EXISTS usuario( ");
         sql.append("     id         INTEGER      PRIMARY KEY AUTOINCREMENT,");
-        sql.append("     Login      VARCHAR (50),");
+        sql.append("     login      VARCHAR (50),");
         sql.append("     senha      VARCHAR (8),");
         sql.append("     email      VARCHAR (50),");
         sql.append("     fone       VARCHAR (20),");

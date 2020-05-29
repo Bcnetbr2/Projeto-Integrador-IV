@@ -15,15 +15,20 @@ import android.widget.ToggleButton;
 import com.example.finance.R;
 import com.example.finance.configDaos.CategoriaDao;
 import com.example.finance.configDaos.FornecedorDao;
+import com.example.finance.configDaos.UsuarioDao;
+import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Categoria;
 import com.example.finance.entidades.Fornecedor;
 
+import java.util.Date;
 import java.util.List;
 
 public class Lancamento extends Activity implements View.OnClickListener{
 
     EditText edtAddCategoria;
     EditText edtAddValorGasto;
+    EditText edtData;
+
     Button btnAdicionar;
     Spinner spTipos;
     Spinner spCategoria;
@@ -45,6 +50,8 @@ public class Lancamento extends Activity implements View.OnClickListener{
     List<Fornecedor>listaFornecedor;
     String[] tipo = {"Receita","Despesa"};
     ArrayAdapter<String> adapterTipo;
+    ConverterData dc;
+    UsuarioDao usuarioDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +61,6 @@ public class Lancamento extends Activity implements View.OnClickListener{
         atualizarTipo();
         atualizarCategoria();
         atualizarFornecedor();
-
-
-
-
-
 
     }
 
@@ -72,6 +74,12 @@ public class Lancamento extends Activity implements View.OnClickListener{
         spCategoria = (Spinner)findViewById(R.id.spCategoria);
         spFornecedor =(Spinner)findViewById(R.id.spFornecedor);
         //String[] lsPeso = getResources().getStringArray(R.array.tipo);
+
+        edtData = (EditText) findViewById(R.id.edtData);
+        dc = new ConverterData();
+        Date data = new Date();
+        edtData.setText(dc.formataDataString(data));
+
 
 
         tvAdicionarCateg= (TextView) findViewById(R.id.tvAdicionarCateg);
@@ -119,6 +127,13 @@ public class Lancamento extends Activity implements View.OnClickListener{
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        atualizarCategoria();
+        atualizarFornecedor();
+    }
 
     @Override
     public void onClick(View v) {

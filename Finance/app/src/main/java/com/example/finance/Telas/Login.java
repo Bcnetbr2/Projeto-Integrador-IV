@@ -11,7 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finance.R;
+import com.example.finance.configDaos.UsuarioDao;
 import com.example.finance.entidades.Usuario;
+
+import java.util.List;
 
 public class Login extends Activity implements View.OnClickListener {
 
@@ -20,9 +23,11 @@ public class Login extends Activity implements View.OnClickListener {
     private static final int REQUEST_SIGNUP = 0;
 
     TextView tvSemConta;
-    EditText edtEmail;
+    EditText edtLogin;
     EditText edtSenha;
     Button btnFinalizarLogin;
+    UsuarioDao usuarioDao;
+    Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +44,14 @@ public class Login extends Activity implements View.OnClickListener {
         tvSemConta = (TextView) findViewById(R.id.tvSemConta);
         tvSemConta.setOnClickListener(this);
 
-        edtEmail = (EditText) findViewById(R.id.edtRecebeEmail);
+        edtLogin = (EditText) findViewById(R.id.edtRecebeLogin);
 
         edtSenha = (EditText) findViewById(R.id.edtSenha);
 
         btnFinalizarLogin = (Button) findViewById(R.id.btnFinalizarLogin);
         btnFinalizarLogin.setOnClickListener(this);
+
+        usuarioDao = new UsuarioDao(this);
     }
 
     @Override
@@ -81,18 +88,24 @@ public class Login extends Activity implements View.OnClickListener {
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
-        public void login() {
-            Log.d(TAG, "Login");
+    public void login() {
+        Log.d(TAG, "Login");
 
-            if (!validate()) {
+        if (!validate()) {
                 onLoginFailed();
                 return;
-            }
-            else{
-                Intent finalizarlogin = new Intent(this, Principal.class);
-                startActivityForResult(finalizarlogin, REQUEST_SIGNUP);
-                finish();
-                overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
+        }
+        else{
+                if(verifcarAcesso(edtLogin.getText().toString(),edtSenha.getText().toString()) == true){
+
+                    finalizarLogin();
+
+                }
+                else{
+
+
+
+                }
             }
 
         }
@@ -117,7 +130,7 @@ public class Login extends Activity implements View.OnClickListener {
 
         public void onLoginSuccess() {
             btnFinalizarLogin.setEnabled(true);
-            finish();
+            //finish();
         }
 
         public void onLoginFailed() {
@@ -129,17 +142,17 @@ public class Login extends Activity implements View.OnClickListener {
         public boolean validate() {
             boolean valid = true;
 
-            String email = edtEmail.getText().toString();
+            String login = edtLogin.getText().toString();
             String password = edtSenha.getText().toString();
 
-            if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                edtEmail.setError("Coloque um e-mail valido");
+            if (login.isEmpty()) {
+                edtLogin.setError("Coloque um login válido");
                 valid = false;
             } else {
-                edtEmail.setError(null);
+                edtLogin.setError(null);
             }
 
-            if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+            if (password.isEmpty() || password.length() < 4 || password.length() > 8) {
                 edtSenha.setError("Use uma senha com no minimo 4 caracteres");
                 valid = false;
             } else {
@@ -147,5 +160,23 @@ public class Login extends Activity implements View.OnClickListener {
             }
 
             return valid;
+        }
+        private boolean verifcarAcesso(String login,String senha){
+
+            boolean resposta = false;
+
+            List<Usuario> listaUsuario = usuarioDao.PesquisarUsuario(login,senha);
+            Usuario usuarioResultado = new Usuario();
+            for (Usuario u:listaUsuario) {
+
+                if(login.equals(u.getLogin()) && senha.equals(u.getSenha())) {
+
+                    usuario = u;
+                    resposta = true;
+                }
+
+            }
+            return resposta;
+
         }
 }

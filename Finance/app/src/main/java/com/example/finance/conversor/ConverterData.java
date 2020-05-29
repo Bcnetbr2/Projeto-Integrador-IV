@@ -15,7 +15,7 @@ public class ConverterData {
 
     }
 
-    public String formataData(Date data){
+    public String formataDataString(Date data){
 
         SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String dataFormat = formatar.format(data);

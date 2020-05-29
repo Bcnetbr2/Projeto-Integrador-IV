@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.finance.R;
 import com.example.finance.configDaos.FornecedorDao;
 import com.example.finance.entidades.Fornecedor;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.util.List;
 
@@ -56,6 +58,14 @@ private void variaveis(){
     fornecedor = new Fornecedor();
     fornecedorDao = new FornecedorDao(this);
 
+    SimpleMaskFormatter FormatarFone = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
+    MaskTextWatcher MascaraFone = new MaskTextWatcher(edtTelefoneFornecedor, FormatarFone);
+    edtTelefoneFornecedor.addTextChangedListener(MascaraFone);
+
+    SimpleMaskFormatter FormatarUF = new SimpleMaskFormatter("LL");
+    MaskTextWatcher MascaraUF = new MaskTextWatcher(edtUfFornecedor, FormatarUF);
+    edtUfFornecedor.addTextChangedListener(MascaraUF);
+
 
 
 }
@@ -65,6 +75,7 @@ private void variaveis(){
         if (v == btnAdicionarFornecedor){
             adicionarFornecedor();
         }
+
     }
 
     private void adicionarFornecedor(){
@@ -77,6 +88,8 @@ private void variaveis(){
         long id = fornecedorDao.inserir(fornecedor);
 
         Toast.makeText(this, "AdicionarFornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
+
+        finish();
     }
 }
 

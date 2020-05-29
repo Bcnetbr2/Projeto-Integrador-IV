@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioDao {
 
     private final String TABELA = "usuario";
-    private final String[] CAMPOS = {"id","Login","senha","email","fone","renda"};
+    private final String[] CAMPOS = {"id","login","senha","email","fone","renda"};
     private Conexao conexao;
     private SQLiteDatabase finance;
 
@@ -61,6 +61,25 @@ public class UsuarioDao {
     public List<Usuario> listar(){
 
         Cursor c = finance.query(TABELA, CAMPOS,null,null,null,null,null);
+
+        List<Usuario> lista = new ArrayList<>();
+        while(c.moveToNext()){
+            Usuario usuario = new Usuario();
+            usuario.setId(c.getLong(0));
+            usuario.setLogin(c.getString(1));
+            usuario.setSenha(c.getString(2));
+            usuario.setEmail(c.getString(3));
+            usuario.setFone(c.getString(4));
+            usuario.setRenda(c.getFloat(5));
+            lista.add(usuario);
+        }
+        return lista;
+    }
+
+
+    public List<Usuario> PesquisarUsuario(String login, String senha){
+
+        Cursor c = finance.query(TABELA, CAMPOS,"login=? and senha=?",new String[]{login,senha},null,null,null);
 
         List<Usuario> lista = new ArrayList<>();
         while(c.moveToNext()){

@@ -57,6 +57,7 @@ public class AdicionarCategorias extends Activity implements View.OnClickListene
             adicionarCateg();
         }
 
+
     }
 
     private void adicionarCateg(){
@@ -65,6 +66,8 @@ public class AdicionarCategorias extends Activity implements View.OnClickListene
         long id = categoriaDao.inserir(categoria);
 
         Toast.makeText(this, "Foi adicionado a categoria com sucecsso", Toast.LENGTH_LONG).show();
+
+        finish();
     }
 
 }
