@@ -69,7 +69,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtSelTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -86,7 +86,7 @@
         android:layout_marginRight="50dp" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/txtSelCategoria"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -164,7 +164,7 @@
         android:inputType="date" />
 
     <EditText
-        android:id="@+id/edtAddValorGasto"
+        android:id="@+id/edtValorGasto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -174,6 +174,7 @@
         android:inputType="numberDecimal" />
 
     <EditText
+        android:id="@+id/edtDescLancamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
@@ -185,16 +186,15 @@
         android:inputType="textMultiLine" />
 
     <Button
-        android:id="@+id/btnAdicionarFornecedor"
+        android:id="@+id/btnFinalizarLancamento"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginLeft="50dp"
-
         android:layout_marginTop="30dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/buttonprincipalamarelo"
         android:fontFamily="@font/montserrat"
-        android:text="Adicionar"
+        android:text="@string/Finalizar"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
 

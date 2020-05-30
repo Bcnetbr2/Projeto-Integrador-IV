@@ -77,7 +77,7 @@ public class Profile extends Activity implements View.OnClickListener{
     }
 
     private void entrarAdicionar(){
-        Intent lancamento = new Intent(this, Lancamento.class);
+        Intent lancamento = new Intent(this, Tela_Lancamento.class);
         startActivity(lancamento);
     }
 

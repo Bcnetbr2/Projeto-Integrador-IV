@@ -38,7 +38,7 @@
             android:text="" />
 
         <ToggleButton
-            android:id="@+id/tgAdd"
+            android:id="@+id/tgLancamento"
             android:layout_width="55dp"
             android:layout_height="50dp"
             android:layout_gravity="clip_horizontal"

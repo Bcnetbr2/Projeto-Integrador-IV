@@ -67,6 +67,7 @@ public class Login extends Activity implements View.OnClickListener {
 
         }
         else if (v == btnFinalizarLogin){
+
             login();
         }
 
@@ -82,13 +83,14 @@ public class Login extends Activity implements View.OnClickListener {
     }
 
     private void finalizarLogin(){
-        Intent finalizarlogin = new Intent(this, Principal.class);
-        Intent telaLancamento = new Intent(this, Lancamento.class);
+        Intent telaPrincipal = new Intent(this, Principal.class);
+        Intent telaLancamento = new Intent(this, Tela_Lancamento.class);
         Bundle extras = new Bundle();
         extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(finalizarlogin);
+        telaPrincipal.putExtras(extras);
+        startActivity(telaPrincipal);
         finish();
+        Log.e("Usuario criado", "Usuario:" + usuario.getLogin());
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 

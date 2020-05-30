@@ -15,6 +15,15 @@ public class ConverterData {
 
     }
 
+    public Date converterStringData(String dataString) throws ParseException {
+
+        SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date data = formatar.parse(dataString);
+
+        return data;
+
+    }
+
     public String formataDataString(Date data){
 
         SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");

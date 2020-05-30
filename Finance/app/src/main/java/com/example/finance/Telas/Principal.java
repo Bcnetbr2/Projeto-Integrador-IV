@@ -10,17 +10,15 @@ import android.widget.ToggleButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.finance.R;
-import com.example.finance.configDaos.UsuarioDao;
 import com.example.finance.entidades.Usuario;
-
-import java.util.List;
 
 public class Principal extends AppCompatActivity implements View.OnClickListener{
 
     ToggleButton tgHome;
-    ToggleButton tgAdicionar;
+    ToggleButton tgLancamento;
     ToggleButton tgReport;
     ToggleButton tgProfile;
+    Usuario usuario;
 
 
 
@@ -30,6 +28,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.principal);
 
         variaveis();
+        receberUsuario();
 
 
 }
@@ -38,8 +37,8 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         tgHome = (ToggleButton) findViewById(R.id.tgHome);
         tgHome.setOnClickListener(this);
 
-        tgAdicionar = (ToggleButton) findViewById(R.id.tgAdd);
-        tgAdicionar.setOnClickListener(this);
+        tgLancamento = (ToggleButton) findViewById(R.id.tgLancamento);
+        tgLancamento.setOnClickListener(this);
 
         tgReport = (ToggleButton) findViewById(R.id.tgReport);
         tgReport.setOnClickListener(this);
@@ -50,8 +49,8 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-        if (v == tgAdicionar){
-            entrarAdicionar();
+        if (v == tgLancamento){
+            entrarLancamento();
         }
         else if (v == tgReport){
             entrarReport();
@@ -61,9 +60,10 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-    private void entrarAdicionar(){
-        Intent adicionarCategoria = new Intent(this, Lancamento.class);
-        startActivity(adicionarCategoria);
+    private void entrarLancamento(){
+        //Intent adicionarCategoria = new Intent(this, Tela_Lancamento.class);
+        //startActivity(adicionarCategoria);
+        enviarUsuario();
     }
 
     private void entrarReport(){
@@ -74,5 +74,28 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     private void entrarProfile(){
         Intent profile = new Intent(this, Profile.class);
         startActivity(profile);
+    }
+
+    private void receberUsuario(){
+
+        if(getIntent().getExtras().getSerializable("usuario") != null){
+
+            usuario = (Usuario)getIntent().getExtras().getSerializable("usuario");
+
+        }
+        else{
+            Toast.makeText(this,"não recebido",Toast.LENGTH_LONG).show();
+            Log.e("Usuario","não recebido");
+        }
+
+    }
+    private void enviarUsuario(){
+
+        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
+        Bundle extras = new Bundle();
+        extras.putSerializable("usuario",usuario);
+        telaLancamento.putExtras(extras);
+        startActivity(telaLancamento);
+
     }
 }
