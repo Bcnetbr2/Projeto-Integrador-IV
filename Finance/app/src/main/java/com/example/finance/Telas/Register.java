@@ -29,7 +29,7 @@ public class Register extends Activity implements View.OnClickListener {
     EditText edtConfirmeSenha;
 
     UsuarioDao usuarioDao;
-    Usuario usuario;
+   // Usuario usuario;
 
 
     @Override
@@ -114,7 +114,7 @@ public class Register extends Activity implements View.OnClickListener {
             long id = usuarioDao.inserir(usuario);
             Toast.makeText(this,"O usuario: " + usuario.getLogin() + "foi inseriodo com o id: " + id,Toast.LENGTH_LONG).show();
 
-            Intent finalizarcadastro = new Intent(this, Principal.class);
+            Intent finalizarcadastro = new Intent(this, Login.class);
             startActivity(finalizarcadastro);
         }
 

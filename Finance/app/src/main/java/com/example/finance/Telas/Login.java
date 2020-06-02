@@ -11,9 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finance.R;
+import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
+import com.example.finance.entidades.ControleUsuario;
+import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
+import java.text.ParseException;
 import java.util.List;
 
 public class Login extends Activity implements View.OnClickListener {
@@ -27,7 +31,7 @@ public class Login extends Activity implements View.OnClickListener {
     EditText edtSenha;
     Button btnFinalizarLogin;
     UsuarioDao usuarioDao;
-    Usuario usuario;
+    //Usuario usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,19 @@ public class Login extends Activity implements View.OnClickListener {
         setContentView(R.layout.login);
 
         variaveis();
+        try {
+            LancamentoDao lancamentoDao = new LancamentoDao(this);
+            List<Lancamento>listaLac = lancamentoDao.listar();
+            for (Lancamento l:listaLac) {
+
+                Log.e("Lançamento","usuario: " + l.getUsuario().getLogin());
+                Log.e("Lançamento","categoria: " + l.getCategoria().getDescricao());
+                Log.e("Lançamento","fornecedor: " + l.getFornecedor().getNome());
+
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
     private void variaveis(){
@@ -84,13 +101,13 @@ public class Login extends Activity implements View.OnClickListener {
 
     private void finalizarLogin(){
         Intent telaPrincipal = new Intent(this, Principal.class);
-        Intent telaLancamento = new Intent(this, Tela_Lancamento.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaPrincipal.putExtras(extras);
+        //Intent telaLancamento = new Intent(this, Tela_Lancamento.class);
+        //Bundle extras = new Bundle();
+        //extras.putSerializable("usuario",usuario);
+        //telaPrincipal.putExtras(extras);
         startActivity(telaPrincipal);
         finish();
-        Log.e("Usuario criado", "Usuario:" + usuario.getLogin());
+        Log.e("Usuario criado", "Usuario:" + ControleUsuario.getUsuario().getLogin());
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
@@ -178,7 +195,7 @@ public class Login extends Activity implements View.OnClickListener {
 
                 if(login.equals(u.getLogin()) && senha.equals(u.getSenha())) {
 
-                    usuario = u;
+                    ControleUsuario.setUsuario(u);
                     resposta = true;
                 }
 

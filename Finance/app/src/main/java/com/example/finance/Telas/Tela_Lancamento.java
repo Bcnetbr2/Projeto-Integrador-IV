@@ -20,6 +20,7 @@ import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
 import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Categoria;
+import com.example.finance.entidades.ControleUsuario;
 import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
@@ -52,7 +53,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     ArrayAdapter<String> adapterTipo;
     ConverterData dc;
     UsuarioDao usuarioDao;
-    Usuario usuario;
+    //Usuario usuario;
     LancamentoDao lancamentoDao;
     //Button btnAdicionar;
 
@@ -71,7 +72,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         atualizarTipo();
         atualizarCategoria();
         atualizarFornecedor();
-        receberUsuario();
+        //receberUsuario();
         try {
             List<Lancamento>listaLac = lancamentoDao.listar();
             for (Lancamento l:listaLac) {
@@ -193,15 +194,20 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
        }
        else if (v == tgReport){
             entrarReport();
+            finish();
        }
        else if (v == tgProfile){
             entrarProfile();
+            finish();
        }
        else if (v == tgHome){
             entrarHome();
+            finish();
+
        }
        else if (v == tgAdd){
            entrarLacamento();
+           finish();
        }
 
 
@@ -220,11 +226,13 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     private void entrarFornecedor(){
         Intent profile = new Intent(this, AdicionarFornecedor.class);
         startActivity(profile);
+        //finish();
     }
 
     private void entrarHome(){
         Intent home = new Intent(this, Principal.class);
         startActivity(home);
+        //finish();
     }
     private void entrarLacamento(){
         Intent telaLanc = new Intent(this,Tela_Lancamento.class);
@@ -236,7 +244,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         fornecedor= (Fornecedor)spFornecedor.getSelectedItem();
         String tipo = String.valueOf(spTipos.getSelectedItem());
         Lancamento lancamento = new Lancamento();
-        lancamento.setUsuario(usuario);
+        lancamento.setUsuario(ControleUsuario.getUsuario());
         lancamento .setTipo(tipo);
         lancamento.setCategoria(categoria);
         lancamento.setFornecedor(fornecedor);
@@ -247,8 +255,9 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         long id = lancamentoDao.inserir(lancamento);
 
         Toast.makeText(this, "Lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
+        finish();
     }
-    private void receberUsuario(){
+    /*private void receberUsuario(){
 
         if(getIntent().getExtras().getSerializable("usuario") != null){
 
@@ -261,6 +270,6 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         }
 
     }
-
+*/
   }
 

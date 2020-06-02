@@ -198,5 +198,27 @@ public class LancamentoDao {
         }
         return lista;
     }
+    public List<Lancamento> listarLancUsuario(long id_usuario) throws ParseException {
+
+        Cursor c = finance.query(TABELA, CAMPOS,"id_usuario=?",new String[]{String.valueOf(id_usuario)},null,null,null);
+
+        List<Lancamento> lista = new ArrayList<>();
+        //ConverterData converterData = new ConverterData();
+
+        while(c.moveToNext()){
+            Lancamento lancamento = new Lancamento();
+            lancamento.setId(c.getLong(0));
+            lancamento.setUsuario(retornoUsuario(c.getLong(1)));
+            lancamento.setCategoria(retornoCategoria(c.getLong(2)));
+            lancamento.setFornecedor(retornoFornecedor(c.getLong(3)));
+            lancamento.setTipo(c.getString(4));
+            lancamento.setData(dt.converterLongData(c.getLong(5)));
+            lancamento.setValor(c.getFloat(6));
+            lancamento.setDescricao(c.getString(7));
+
+            lista.add(lancamento);
+        }
+        return lista;
+    }
 
 }

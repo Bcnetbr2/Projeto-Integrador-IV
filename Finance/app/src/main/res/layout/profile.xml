@@ -74,7 +74,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="522dp"
         android:layout_margin="40dp"
         android:orientation="vertical">
 
@@ -156,14 +156,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Nova senha"
-            android:inputType="textPassword" />
-
-        <EditText
-            android:id="@+id/edtConfirmacaoSenha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Confirme nova senha"
             android:inputType="textPassword" />
 
         <Button
