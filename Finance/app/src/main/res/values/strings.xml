@@ -4,9 +4,15 @@
     <string name="Relatorio">Relatorio</string>
     <string name="Adicionar">Adicionar</string>
     <string name="Finalizar">Finalizar</string>
+    <string name="Excluir">Excluir</string>
     <string name="Perfil">Perfil</string>
     <string-array name="tipo">
         <item>Gasto</item>
         <item>Investimento</item>
     </string-array>
+    <string name="dtInicialFiltro">"Data Inicial</string>
+    <string name="dtFinalFiltro">Data Inicial</string>
+    <string name="categoriaFiltro">Categoria</string>
+    <string name="tituloFiltro">Filtro</string>
+
 </resources>

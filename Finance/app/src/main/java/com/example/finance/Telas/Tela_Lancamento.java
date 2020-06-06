@@ -20,10 +20,9 @@ import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
 import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Categoria;
-import com.example.finance.entidades.ControleUsuario;
+import com.example.finance.Controle.ControleEntidades;
 import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
-import com.example.finance.entidades.Usuario;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -41,6 +40,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     TextView tvAdicionarCateg;
     TextView tvFornecedor;
     Button btnAdicionarLancamento;
+    Button btnExcluirLancamento;
     Categoria categoria;
     CategoriaDao categoriaDao;
     ArrayAdapter<Categoria> adapterCategoria;
@@ -69,11 +69,21 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lancamento);
         variaveis();
-        atualizarTipo();
-        atualizarCategoria();
-        atualizarFornecedor();
+
+        if(ControleEntidades.getStatus().equals("vazio")) {
+            atualizarTipo();
+            atualizarCategoria();
+            atualizarFornecedor();
+        }
+        else{
+            atualizarCategoria2();
+            atualizarFornecedor2();
+            preecherValores();
+        }
+        //setarSpCAtegoria();
+
         //receberUsuario();
-        try {
+       /* try {
             List<Lancamento>listaLac = lancamentoDao.listar();
             for (Lancamento l:listaLac) {
 
@@ -85,6 +95,8 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        */
 
 
     }
@@ -99,6 +111,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         spTipos = (Spinner) findViewById(R.id.spTipos);
         //Spinner categorias
         spCategoria = (Spinner)findViewById(R.id.spCategoria);
+
         //Spinner fornecedor
         spFornecedor =(Spinner)findViewById(R.id.spFornecedor);
         //campo data
@@ -106,6 +119,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         dc = new ConverterData();
         Date data = new Date();
         edtData.setText(dc.formataDataString(data));
+
         edtValorGasto = (EditText) findViewById(R.id.edtValorGasto);
         edtDescLancamento = (EditText) findViewById(R.id.edtDescLancamento);
 
@@ -118,6 +132,9 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         //botão adicionar lançamento
         btnAdicionarLancamento = (Button) findViewById(R.id.btnFinalizarLancamento);
         btnAdicionarLancamento.setOnClickListener(this);
+        //botão excluir lançamento
+        btnExcluirLancamento = (Button) findViewById(R.id.btnExcluirLancamento);
+        btnExcluirLancamento.setOnClickListener(this);
         //conversor de data
 
         //Classes dao
@@ -146,6 +163,11 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         listaCategoria = categoriaDao.listar();
         adapterCategoria = new ArrayAdapter<Categoria>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,listaCategoria);
         spCategoria.setAdapter(adapterCategoria);
+
+
+
+
+
     }
 
     private void atualizarFornecedor(){
@@ -153,6 +175,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         listaFornecedor = fornecedorDao.listar();
         adapterFornecedor = new ArrayAdapter<Fornecedor>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,listaFornecedor);
         spFornecedor.setAdapter(adapterFornecedor);
+
 
 
     }
@@ -168,8 +191,8 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     protected void onResume() {
         super.onResume();
 
-        atualizarCategoria();
-        atualizarFornecedor();
+        //atualizarCategoria();
+        //atualizarFornecedor();
     }
 
     @Override
@@ -192,21 +215,32 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
                e.printStackTrace();
            }
        }
+       else if(v == btnExcluirLancamento){
+           try {
+               excluirLancamento();
+           } catch (ParseException e) {
+               e.printStackTrace();
+           }
+       }
        else if (v == tgReport){
             entrarReport();
+           ControleEntidades.setStatus("vazio");
             finish();
        }
        else if (v == tgProfile){
             entrarProfile();
+            ControleEntidades.setStatus("vazio");
             finish();
        }
        else if (v == tgHome){
             entrarHome();
+           ControleEntidades.setStatus("vazio");
             finish();
 
        }
        else if (v == tgAdd){
            entrarLacamento();
+           ControleEntidades.setStatus("vazio");
            finish();
        }
 
@@ -244,32 +278,132 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         fornecedor= (Fornecedor)spFornecedor.getSelectedItem();
         String tipo = String.valueOf(spTipos.getSelectedItem());
         Lancamento lancamento = new Lancamento();
-        lancamento.setUsuario(ControleUsuario.getUsuario());
-        lancamento .setTipo(tipo);
+        lancamento.setUsuario(ControleEntidades.getUsuario());
+        lancamento.setTipo(tipo);
         lancamento.setCategoria(categoria);
         lancamento.setFornecedor(fornecedor);
         lancamento.setData(dc.converterStringData(edtData.getText().toString()));
         lancamento.setValor(Float.parseFloat(String.valueOf(edtValorGasto.getText())));
         lancamento.setDescricao(edtDescLancamento.getText().toString());
 
-        long id = lancamentoDao.inserir(lancamento);
+        Log.e("Valor",String.valueOf(lancamento.getValor()));
+        Log.e("Categoria", lancamento.getCategoria().getDescricao());
 
-        Toast.makeText(this, "Lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
+        if(ControleEntidades.getStatus().equals("vazio")) {
+
+            long id = lancamentoDao.inserir(lancamento);
+
+            Toast.makeText(this, "Lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else if(ControleEntidades.getStatus().equals("ativo")){
+
+            lancamento.setId(ControleEntidades.getLancamento().getId());
+
+            long id = lancamentoDao.alterar(lancamento);
+
+            Toast.makeText(this, "Lançamento atualizado com sucesso", Toast.LENGTH_LONG).show();
+            ControleEntidades.setStatus("vazio");
+            finish();
+
+        }
         finish();
     }
-    /*private void receberUsuario(){
+    private void excluirLancamento() throws ParseException {
 
-        if(getIntent().getExtras().getSerializable("usuario") != null){
+        categoria = (Categoria)spCategoria.getSelectedItem();
+        fornecedor= (Fornecedor)spFornecedor.getSelectedItem();
+        String tipo = String.valueOf(spTipos.getSelectedItem());
+        Lancamento lancamento = new Lancamento();
+        lancamento.setId(ControleEntidades.getLancamento().getId());
+        lancamento.setUsuario(ControleEntidades.getUsuario());
+        lancamento.setTipo(tipo);
+        lancamento.setCategoria(categoria);
+        lancamento.setFornecedor(fornecedor);
+        lancamento.setData(dc.converterStringData(edtData.getText().toString()));
+        lancamento.setValor(Float.parseFloat(String.valueOf(edtValorGasto.getText())));
+        lancamento.setDescricao(edtDescLancamento.getText().toString());
 
-            usuario = (Usuario)getIntent().getExtras().getSerializable("usuario");
+        Log.e("Valor",String.valueOf(lancamento.getValor()));
+        Log.e("Categoria", lancamento.getCategoria().getDescricao());
 
+        if(ControleEntidades.getStatus().equals("vazio")) {
+
+            //long id = lancamentoDao.inserir(lancamento);
+
+            Toast.makeText(this, "Não foi possivel excluir o lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
+            finish();
         }
-        else{
-            Toast.makeText(this,"não recebido",Toast.LENGTH_LONG).show();
-            Log.e("Usuario","não recebido");
+        else if(ControleEntidades.getStatus().equals("ativo")){
+
+            //lancamento.setId(ControleEntidades.getLancamento().getId());
+
+            long id = lancamentoDao.excluir(lancamento);
+
+            Toast.makeText(this, "Lançamento excluido com sucesso", Toast.LENGTH_LONG).show();
+            ControleEntidades.setStatus("vazio");
+            finish();
         }
+    }
+    private void atualizarCategoria2() {
+
+        listaCategoria = categoriaDao.listar();
+        adapterCategoria = new ArrayAdapter<Categoria>(Tela_Lancamento.this, android.R.layout.simple_list_item_1, listaCategoria);
+        spCategoria.setAdapter(adapterCategoria);
+
+        for (int i = 0; i < listaCategoria.size(); i++) {
+            if (listaCategoria.get(i).getDescricao().toString().equals(ControleEntidades.getLancamento().getCategoria().getDescricao().toString())) {
+                spCategoria.setSelection(i);
+            }
+        }
+    }
+
+    private void atualizarFornecedor2(){
+
+        listaFornecedor = fornecedorDao.listar();
+        adapterFornecedor = new ArrayAdapter<Fornecedor>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,listaFornecedor);
+        spFornecedor.setAdapter(adapterFornecedor);
+        int p = 3;
+
+        for(int i = 0;i<listaFornecedor.size();i++){
+            if(listaFornecedor.get(i).getNome().toString().equals(ControleEntidades.getLancamento().getFornecedor().getNome().toString())){
+                spFornecedor.setSelection(i);
+            }
+        }
+
 
     }
-*/
-  }
+
+    private void setarTipo(){
+
+        int posicao = 0;
+        for(int i = 0; i<tipo.length;i++){
+
+            if(tipo[i].toString().equals(ControleEntidades.getLancamento().getTipo().toString())){
+
+                posicao = i;
+                break;
+
+            }
+
+        }
+        adapterTipo = new ArrayAdapter<String>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,tipo);
+        spTipos.setAdapter(adapterTipo);
+        spTipos.setSelection(posicao);
+
+    }
+    private void preecherValores(){
+
+        setarTipo();
+        //setarSpCategoria();
+        //setarSpFornecedor();
+        edtData.setText(String.valueOf(dc.formataDataString(ControleEntidades.getLancamento().getData())));
+        edtValorGasto.setText(String.valueOf(ControleEntidades.getLancamento().getValor()));
+        edtDescLancamento.setText(ControleEntidades.getLancamento().getDescricao());
+
+    }
+
+ }
+
+
 

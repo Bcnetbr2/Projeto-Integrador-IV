@@ -13,11 +13,13 @@ import android.widget.Toast;
 import com.example.finance.R;
 import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
-import com.example.finance.entidades.ControleUsuario;
+import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class Login extends Activity implements View.OnClickListener {
@@ -32,6 +34,7 @@ public class Login extends Activity implements View.OnClickListener {
     Button btnFinalizarLogin;
     UsuarioDao usuarioDao;
     //Usuario usuario;
+    ConverterData dt = new ConverterData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,20 +42,31 @@ public class Login extends Activity implements View.OnClickListener {
         setContentView(R.layout.login);
 
         variaveis();
-        try {
+        /*try {
             LancamentoDao lancamentoDao = new LancamentoDao(this);
+
             List<Lancamento>listaLac = lancamentoDao.listar();
             for (Lancamento l:listaLac) {
 
                 Log.e("Lançamento","usuario: " + l.getUsuario().getLogin());
                 Log.e("Lançamento","categoria: " + l.getCategoria().getDescricao());
                 Log.e("Lançamento","fornecedor: " + l.getFornecedor().getNome());
+                Log.e("Lançamento","Data: " + l.getData());
 
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Date data = new Date();
+        Log.e("Lançamento","Data: " + data);
+        Date data2 = dt.DataInicial(data);
+        Log.e("Lançamento","Data: " + data2);
+
+         */
     }
+
+
 
     private void variaveis(){
 
@@ -107,7 +121,7 @@ public class Login extends Activity implements View.OnClickListener {
         //telaPrincipal.putExtras(extras);
         startActivity(telaPrincipal);
         finish();
-        Log.e("Usuario criado", "Usuario:" + ControleUsuario.getUsuario().getLogin());
+        Log.e("Usuario criado", "Usuario:" + ControleEntidades.getUsuario().getLogin());
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
@@ -195,7 +209,7 @@ public class Login extends Activity implements View.OnClickListener {
 
                 if(login.equals(u.getLogin()) && senha.equals(u.getSenha())) {
 
-                    ControleUsuario.setUsuario(u);
+                    ControleEntidades.setUsuario(u);
                     resposta = true;
                 }
 

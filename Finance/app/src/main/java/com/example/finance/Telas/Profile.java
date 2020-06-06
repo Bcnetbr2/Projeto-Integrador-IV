@@ -3,7 +3,6 @@ package com.example.finance.Telas;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,8 +11,7 @@ import android.widget.ToggleButton;
 
 import com.example.finance.R;
 import com.example.finance.configDaos.UsuarioDao;
-import com.example.finance.entidades.ControleUsuario;
-import com.example.finance.entidades.Usuario;
+import com.example.finance.Controle.ControleEntidades;
 
 public class Profile extends Activity implements View.OnClickListener{
 
@@ -107,18 +105,18 @@ public class Profile extends Activity implements View.OnClickListener{
         //finish();
     }
     private void salvarDados(){
-        ControleUsuario.getUsuario().setLogin(edtRecebeNome.getText().toString());
-        ControleUsuario.getUsuario().setEmail(edtRecebeEmail.getText().toString());
-        ControleUsuario.getUsuario().setFone(edtRecebeTele.getText().toString());
-        ControleUsuario.getUsuario().setRenda(Float.parseFloat(edtRecebeRenda.getText().toString()));
+        ControleEntidades.getUsuario().setLogin(edtRecebeNome.getText().toString());
+        ControleEntidades.getUsuario().setEmail(edtRecebeEmail.getText().toString());
+        ControleEntidades.getUsuario().setFone(edtRecebeTele.getText().toString());
+        ControleEntidades.getUsuario().setRenda(Float.parseFloat(edtRecebeRenda.getText().toString()));
         if(edtSenhaNova.getText().toString().equals("")){
-            ControleUsuario.getUsuario().setSenha(edtSenhaAtual.getText().toString());
+            ControleEntidades.getUsuario().setSenha(edtSenhaAtual.getText().toString());
         }
         else{
-            ControleUsuario.getUsuario().setSenha(edtSenhaNova.getText().toString());
+            ControleEntidades.getUsuario().setSenha(edtSenhaNova.getText().toString());
         }
 
-        long id =  usuarioDao.alterar(ControleUsuario.getUsuario());
+        long id =  usuarioDao.alterar(ControleEntidades.getUsuario());
 
         Toast.makeText(this, "Dados salvo com sucesso", Toast.LENGTH_LONG).show();
     }
@@ -150,11 +148,11 @@ public class Profile extends Activity implements View.OnClickListener{
    */
     public void preencherDados(){
 
-        edtRecebeNome.setText(ControleUsuario.getUsuario().getLogin());
-        edtRecebeEmail.setText(ControleUsuario.getUsuario().getEmail());
-        edtRecebeTele.setText(ControleUsuario.getUsuario().getFone());
-        edtRecebeRenda.setText(String.valueOf(ControleUsuario.getUsuario().getRenda()));
-        edtSenhaAtual.setText(ControleUsuario.getUsuario().getSenha());
+        edtRecebeNome.setText(ControleEntidades.getUsuario().getLogin());
+        edtRecebeEmail.setText(ControleEntidades.getUsuario().getEmail());
+        edtRecebeTele.setText(ControleEntidades.getUsuario().getFone());
+        edtRecebeRenda.setText(String.valueOf(ControleEntidades.getUsuario().getRenda()));
+        edtSenhaAtual.setText(ControleEntidades.getUsuario().getSenha());
 
 
 

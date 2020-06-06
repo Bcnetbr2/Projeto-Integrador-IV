@@ -12,8 +12,10 @@ import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class LancamentoDao {
@@ -176,9 +178,124 @@ public class LancamentoDao {
 
     }
 
-    public List<Lancamento> listar() throws ParseException {
+    public List<Lancamento> listar(long id_usuario) throws ParseException {
+        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao, u.id, u.login, u.senha, u.email, u.fone, u.renda, c.id, c.nome , f.id, f.nome, f.telefone, f.email as email, UF from lancamento as L \n" +
+                "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
+                "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
+                "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n"+
+                "WHERE u.id = ?";
+        String[] valores = new String[] {String.valueOf(id_usuario)};
+        Cursor c = finance.rawQuery(sql,valores);
 
-        Cursor c = finance.query(TABELA, CAMPOS,null,null,null,null,null);
+        List<Lancamento> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while(c.moveToNext()){
+            Lancamento lancamento = new Lancamento();
+            lancamento.setId(c.getLong(0));
+            lancamento.setTipo(c.getString(1));
+            lancamento.setData(dt.converterLongData(c.getLong(2)));
+            lancamento.setValor(c.getFloat(3));
+            lancamento.setDescricao(c.getString(4));
+            lancamento.getUsuario().setId(c.getLong(5));
+            lancamento.getUsuario().setLogin(c.getString(6));
+            lancamento.getUsuario().setSenha(c.getString(7));
+            lancamento.getUsuario().setEmail(c.getString(8));
+            lancamento.getUsuario().setFone(c.getString(9));
+            lancamento.getUsuario().setRenda(c.getFloat(10));
+            lancamento.getCategoria().setId(c.getLong(11));
+            lancamento.getCategoria().setDescricao(c.getString(12));
+            lancamento.getFornecedor().setId(c.getLong(13));
+            lancamento.getFornecedor().setNome(c.getString(14));
+            lancamento.getFornecedor().setTelefone(c.getString(15));
+            lancamento.getFornecedor().setEmail(c.getString(16));
+            lancamento.getFornecedor().setUf(c.getString(17));
+
+
+            lista.add(lancamento);
+        }
+        return lista;
+    }
+    public List<Lancamento> listarLancUsuario(long id_usuario,Date dataInc,Date dataFim) throws ParseException {
+
+        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.nome ,f.id,f.telefone,f.email ,f.UF from lancamento as L \n" +
+                "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
+                "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
+                "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n" +
+                "WHERE u.id = ? AND L.data BETWEEN ? AND ? ORDER BY L.data DESC;";
+        String[] valores = new String[] {String.valueOf(id_usuario),String.valueOf(dataInc.getTime()),String.valueOf(dataFim.getTime())};
+        Cursor c = finance.rawQuery(sql, valores);
+
+        List<Lancamento> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while (c.moveToNext()) {
+            Lancamento lancamento = new Lancamento();
+            lancamento.setId(c.getLong(0));
+            lancamento.setTipo(c.getString(1));
+            lancamento.setData(dt.converterLongData(c.getLong(2)));
+            lancamento.setValor(c.getFloat(3));
+            lancamento.setDescricao(c.getString(4));
+            lancamento.getUsuario().setId(c.getLong(5));
+            lancamento.getUsuario().setLogin(c.getString(6));
+            lancamento.getUsuario().setSenha(c.getString(7));
+            lancamento.getUsuario().setEmail(c.getString(8));
+            lancamento.getUsuario().setFone(c.getString(9));
+            lancamento.getUsuario().setRenda(c.getFloat(10));
+            lancamento.getCategoria().setId(c.getLong(11));
+            lancamento.getCategoria().setDescricao(c.getString(12));
+            lancamento.getFornecedor().setId(c.getLong(13));
+            lancamento.getFornecedor().setNome(c.getString(14));
+            lancamento.getFornecedor().setTelefone(c.getString(15));
+            lancamento.getFornecedor().setEmail(c.getString(16));
+            lancamento.getFornecedor().setUf(c.getString(17));
+
+            lista.add(lancamento);
+        }
+        return lista;
+    }
+    public List<Lancamento> listarLancFiltro(long id_usuario,String categoria,Date dataInc,Date dataFim) throws ParseException {
+
+        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.nome ,f.id,f.telefone,f.email ,f.UF from lancamento as L \n" +
+                "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
+                "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
+                "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n" +
+                "WHERE u.id = ? AND c.nome = ? AND L.data BETWEEN ? AND ? ORDER BY L.data DESC";
+        String[] valores = new String[] {String.valueOf(id_usuario),categoria,String.valueOf(dataInc.getTime()),String.valueOf(dataFim.getTime())};
+        Cursor c = finance.rawQuery(sql, valores);
+
+        List<Lancamento> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while (c.moveToNext()) {
+            Lancamento lancamento = new Lancamento();
+            lancamento.setId(c.getLong(0));
+            lancamento.setTipo(c.getString(1));
+            lancamento.setData(dt.converterLongData(c.getLong(2)));
+            lancamento.setValor(c.getFloat(3));
+            lancamento.setDescricao(c.getString(4));
+            lancamento.getUsuario().setId(c.getLong(5));
+            lancamento.getUsuario().setLogin(c.getString(6));
+            lancamento.getUsuario().setSenha(c.getString(7));
+            lancamento.getUsuario().setEmail(c.getString(8));
+            lancamento.getUsuario().setFone(c.getString(9));
+            lancamento.getUsuario().setRenda(c.getFloat(10));
+            lancamento.getCategoria().setId(c.getLong(11));
+            lancamento.getCategoria().setDescricao(c.getString(12));
+            lancamento.getFornecedor().setId(c.getLong(13));
+            lancamento.getFornecedor().setNome(c.getString(14));
+            lancamento.getFornecedor().setTelefone(c.getString(15));
+            lancamento.getFornecedor().setEmail(c.getString(16));
+            lancamento.getFornecedor().setUf(c.getString(17));
+
+            lista.add(lancamento);
+        }
+        return lista;
+    }
+/*
+    public List<Lancamento> listarFiltro(Date dataInic,Date dataFinal,long categoria) throws ParseException {
+
+        Cursor c = finance.query(TABELA, CAMPOS,"data>=? and data<=? and id_categoria = ?",new String[]{String.valueOf(dataInic.getTime()),String.valueOf(dataFinal.getTime()),String.valueOf(categoria)},null,null,null);
 
         List<Lancamento> lista = new ArrayList<>();
         ConverterData converterData = new ConverterData();
@@ -198,27 +315,7 @@ public class LancamentoDao {
         }
         return lista;
     }
-    public List<Lancamento> listarLancUsuario(long id_usuario) throws ParseException {
 
-        Cursor c = finance.query(TABELA, CAMPOS,"id_usuario=?",new String[]{String.valueOf(id_usuario)},null,null,null);
 
-        List<Lancamento> lista = new ArrayList<>();
-        //ConverterData converterData = new ConverterData();
-
-        while(c.moveToNext()){
-            Lancamento lancamento = new Lancamento();
-            lancamento.setId(c.getLong(0));
-            lancamento.setUsuario(retornoUsuario(c.getLong(1)));
-            lancamento.setCategoria(retornoCategoria(c.getLong(2)));
-            lancamento.setFornecedor(retornoFornecedor(c.getLong(3)));
-            lancamento.setTipo(c.getString(4));
-            lancamento.setData(dt.converterLongData(c.getLong(5)));
-            lancamento.setValor(c.getFloat(6));
-            lancamento.setDescricao(c.getString(7));
-
-            lista.add(lancamento);
-        }
-        return lista;
-    }
-
+ */
 }

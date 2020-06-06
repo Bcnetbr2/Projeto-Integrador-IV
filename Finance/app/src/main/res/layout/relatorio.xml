@@ -84,13 +84,8 @@
         android:text="Filtro" />
 
     <ListView
+        android:id="@+id/lstResultadoLista"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:background="@color/AmareloOuro" >
-
-
-
-    </ListView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

@@ -14,6 +14,14 @@ public class Lancamento implements Serializable {
     private Float valor;
     private String descricao;
 
+    public Lancamento(){
+
+        usuario = new Usuario();
+        categoria = new Categoria();
+        fornecedor = new Fornecedor();
+
+    }
+
     public long getId() {
         return id;
     }

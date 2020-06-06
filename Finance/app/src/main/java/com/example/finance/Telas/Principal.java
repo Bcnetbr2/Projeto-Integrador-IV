@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.finance.R;
 import com.example.finance.adapter.RelAdapter;
 import com.example.finance.configDaos.LancamentoDao;
-import com.example.finance.entidades.ControleUsuario;
+import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Lancamento;
-import com.example.finance.entidades.Usuario;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class Principal extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
@@ -31,6 +31,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     //Usuario usuario;
     ListView lsListaLc;
     LancamentoDao lancamentoDao;
+    ConverterData converterData = new ConverterData();
 
 
     @Override
@@ -43,7 +44,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Log.e("Usuario", ControleUsuario.getUsuario().getLogin());
+        Log.e("Usuario", ControleEntidades.getUsuario().getLogin());
         //receberUsuario();
 
 
@@ -89,6 +90,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     private void entrarLancamento(){
         Intent adicionarCategoria = new Intent(this, Tela_Lancamento.class);
         startActivity(adicionarCategoria);
+        finish();
         //enviarUsuario();
     }
 
@@ -105,13 +107,41 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     }
     private void atualizarLista() throws ParseException {
 
-        List<Lancamento> lancamentos = lancamentoDao.listarLancUsuario(ControleUsuario.getUsuario().getId());
+        Date dataFinal = new Date();
+        Log.e("Usuario", "Data" + dataFinal);
+        Date dataInicial = converterData.DataInicial(dataFinal);
+        Log.e("Usuario", "Data" + dataInicial);
+        Log.e("Usuario", "Data" + ControleEntidades.getUsuario().getId());
+        List<Lancamento> lancamentos = lancamentoDao.listarLancUsuario(ControleEntidades.getUsuario().getId(),dataInicial,dataFinal);
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lsListaLc.setAdapter(adapter);
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        try {
+            atualizarLista();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        Lancamento lancamento = (Lancamento)lsListaLc.getAdapter().getItem(position);
+        ControleEntidades.setLancamento(lancamento);
+        ControleEntidades.setStatus("ativo");
+        //Log.e("Lançamento",ControleEntidades.getLancamento().getUsuario().getLogin());
+        //Log.e("Lançamento",ControleEntidades.getLancamento().getTipo());
+        //Log.e("Lançamento",ControleEntidades.getLancamento().getCategoria().getDescricao());
+        //Log.e("Lançamento",ControleEntidades.getLancamento().getFornecedor().getNome());
+        //Log.e("Lançamento",String.valueOf(ControleEntidades.getLancamento().getData()));
+        //Log.e("Lançamento",ControleEntidades.getLancamento().getUsuario().getLogin());
+
+        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
+        startActivity(telaLancamento);
 
     }
 
