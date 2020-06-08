@@ -68,9 +68,9 @@ public class Filtro extends Activity implements View.OnClickListener{
 
     private void adicionarFiltro() throws ParseException {
 
-        ControleEntidades.setDataInicial(converterData.converterStringData(edtDataInicial.getText().toString()));
+        ControleEntidades.setDataInicial(converterData.gerarDataInicial(edtDataInicial.getText().toString()));
         Log.e("Data Inicial","Data: " + ControleEntidades.getDataInicial());
-        ControleEntidades.setDataFinal(converterData.converterStringData(edtDataFinal.getText().toString()));
+        ControleEntidades.setDataFinal(converterData.gerarDataFinal(edtDataFinal.getText().toString()));
         Log.e("Data Final","Data: " + ControleEntidades.getDataFinal());
         Categoria cat = (Categoria)spCategoriaFiltro.getSelectedItem();
         ControleEntidades.setCategoria(cat);

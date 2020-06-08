@@ -108,11 +108,12 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     private void atualizarLista() throws ParseException {
 
         Date dataFinal = new Date();
-        Log.e("Usuario", "Data" + dataFinal);
-        Date dataInicial = converterData.DataInicial(dataFinal);
+        Date dataFinalZ = converterData.gerarDataFinal2(converterData.formataDataString2(dataFinal));
+        Log.e("Usuario", "Data" + dataFinalZ);
+        Date dataInicial = converterData.gerarDataInicial2(converterData.formataDataString2(dataFinalZ));
         Log.e("Usuario", "Data" + dataInicial);
         Log.e("Usuario", "Data" + ControleEntidades.getUsuario().getId());
-        List<Lancamento> lancamentos = lancamentoDao.listarLancUsuario(ControleEntidades.getUsuario().getId(),dataInicial,dataFinal);
+        List<Lancamento> lancamentos = lancamentoDao.listarLancUsuario(ControleEntidades.getUsuario().getId(),dataInicial,dataFinalZ);
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lsListaLc.setAdapter(adapter);
     }

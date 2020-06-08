@@ -183,7 +183,7 @@ public class LancamentoDao {
                 "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
                 "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
                 "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n"+
-                "WHERE u.id = ?";
+                "WHERE u.id = ? ORDER BY L.data DESC";
         String[] valores = new String[] {String.valueOf(id_usuario)};
         Cursor c = finance.rawQuery(sql,valores);
 
