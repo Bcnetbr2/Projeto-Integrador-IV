@@ -80,33 +80,12 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
             atualizarFornecedor2();
             preecherValores();
         }
-        //setarSpCAtegoria();
-
-        //receberUsuario();
-       /* try {
-            List<Lancamento>listaLac = lancamentoDao.listar();
-            for (Lancamento l:listaLac) {
-
-                Log.e("Lançamento","usuario: " + l.getUsuario().getLogin());
-                Log.e("Lançamento","categoria: " + l.getCategoria().getDescricao());
-                Log.e("Lançamento","fornecedor: " + l.getFornecedor().getNome());
-
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        */
 
 
     }
 
     public void variaveis(){
 
-
-        //btnAdicionar = (Button) findViewById(R.id.btnAdicionarFornecedor);
-        //btnAdicionar.setOnClickListener(this);
-        //String[] lsPeso = getResources().getStringArray(R.array.tipo);
         //Spinner tipos
         spTipos = (Spinner) findViewById(R.id.spTipos);
         //Spinner categorias
@@ -156,6 +135,17 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         tgAdd = (ToggleButton) findViewById(R.id.tgAdd);
         tgAdd.setOnClickListener(this);
 
+        edtData.setEnabled(false);
+
+        if(ControleEntidades.getStatus().equals("vazio")){
+            btnExcluirLancamento.setEnabled(false);
+            Log.e("Status",ControleEntidades.getStatus());
+        }
+        else if(ControleEntidades.getStatus().equals("ativo")){
+            btnExcluirLancamento.setEnabled(true);
+            Log.e("Status",ControleEntidades.getStatus());
+        }
+
     }
 
     private void atualizarCategoria(){
@@ -164,10 +154,6 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         adapterCategoria = new ArrayAdapter<Categoria>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,listaCategoria);
         spCategoria.setAdapter(adapterCategoria);
 
-
-
-
-
     }
 
     private void atualizarFornecedor(){
@@ -175,8 +161,6 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         listaFornecedor = fornecedorDao.listar();
         adapterFornecedor = new ArrayAdapter<Fornecedor>(Tela_Lancamento.this,android.R.layout.simple_list_item_1,listaFornecedor);
         spFornecedor.setAdapter(adapterFornecedor);
-
-
 
     }
 
@@ -191,15 +175,11 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     protected void onResume() {
         super.onResume();
 
-        //atualizarCategoria();
-        //atualizarFornecedor();
+
     }
 
     @Override
     public void onClick(View v) {
-       // if (v == btnAdicionar){
-        //Toast.makeText(this, "Adicionou uma nova categoria", Toast.LENGTH_SHORT).show();
-       // }
 
        if (v == tvAdicionarCateg){
             Intent telaAdicionar = new Intent(this, AdicionarCategorias.class);
@@ -260,13 +240,13 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     private void entrarFornecedor(){
         Intent profile = new Intent(this, AdicionarFornecedor.class);
         startActivity(profile);
-        //finish();
+
     }
 
     private void entrarHome(){
         Intent home = new Intent(this, Principal.class);
         startActivity(home);
-        //finish();
+
     }
     private void entrarLacamento(){
         Intent telaLanc = new Intent(this,Tela_Lancamento.class);
@@ -286,8 +266,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         lancamento.setValor(Float.parseFloat(String.valueOf(edtValorGasto.getText())));
         lancamento.setDescricao(edtDescLancamento.getText().toString());
 
-        Log.e("Valor",String.valueOf(lancamento.getValor()));
-        Log.e("Categoria", lancamento.getCategoria().getDescricao());
+        Log.e("Data","Data " + lancamento.getData());
 
         if(ControleEntidades.getStatus().equals("vazio")) {
 
@@ -324,19 +303,14 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         lancamento.setValor(Float.parseFloat(String.valueOf(edtValorGasto.getText())));
         lancamento.setDescricao(edtDescLancamento.getText().toString());
 
-        Log.e("Valor",String.valueOf(lancamento.getValor()));
-        Log.e("Categoria", lancamento.getCategoria().getDescricao());
+
 
         if(ControleEntidades.getStatus().equals("vazio")) {
-
-            //long id = lancamentoDao.inserir(lancamento);
 
             Toast.makeText(this, "Não foi possivel excluir o lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
             finish();
         }
         else if(ControleEntidades.getStatus().equals("ativo")){
-
-            //lancamento.setId(ControleEntidades.getLancamento().getId());
 
             long id = lancamentoDao.excluir(lancamento);
 
@@ -395,8 +369,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     private void preecherValores(){
 
         setarTipo();
-        //setarSpCategoria();
-        //setarSpFornecedor();
+
         edtData.setText(String.valueOf(dc.formataDataString(ControleEntidades.getLancamento().getData())));
         edtValorGasto.setText(String.valueOf(ControleEntidades.getLancamento().getValor()));
         edtDescLancamento.setText(ControleEntidades.getLancamento().getDescricao());

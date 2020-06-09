@@ -33,7 +33,7 @@ public class Login extends Activity implements View.OnClickListener {
     EditText edtSenha;
     Button btnFinalizarLogin;
     UsuarioDao usuarioDao;
-    //Usuario usuario;
+
     ConverterData dt = new ConverterData();
 
     @Override
@@ -42,28 +42,7 @@ public class Login extends Activity implements View.OnClickListener {
         setContentView(R.layout.login);
 
         variaveis();
-        /*try {
-            LancamentoDao lancamentoDao = new LancamentoDao(this);
 
-            List<Lancamento>listaLac = lancamentoDao.listar();
-            for (Lancamento l:listaLac) {
-
-                Log.e("Lançamento","usuario: " + l.getUsuario().getLogin());
-                Log.e("Lançamento","categoria: " + l.getCategoria().getDescricao());
-                Log.e("Lançamento","fornecedor: " + l.getFornecedor().getNome());
-                Log.e("Lançamento","Data: " + l.getData());
-
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        Date data = new Date();
-        Log.e("Lançamento","Data: " + data);
-        Date data2 = dt.DataInicial(data);
-        Log.e("Lançamento","Data: " + data2);
-
-         */
     }
 
 
@@ -115,10 +94,6 @@ public class Login extends Activity implements View.OnClickListener {
 
     private void finalizarLogin(){
         Intent telaPrincipal = new Intent(this, Principal.class);
-        //Intent telaLancamento = new Intent(this, Tela_Lancamento.class);
-        //Bundle extras = new Bundle();
-        //extras.putSerializable("usuario",usuario);
-        //telaPrincipal.putExtras(extras);
         startActivity(telaPrincipal);
         finish();
         Log.e("Usuario criado", "Usuario:" + ControleEntidades.getUsuario().getLogin());

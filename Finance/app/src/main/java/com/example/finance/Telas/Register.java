@@ -29,7 +29,7 @@ public class Register extends Activity implements View.OnClickListener {
     EditText edtConfirmeSenha;
 
     UsuarioDao usuarioDao;
-   // Usuario usuario;
+
 
 
     @Override
@@ -39,16 +39,7 @@ public class Register extends Activity implements View.OnClickListener {
 
         variaveis();
 
-        /*if(getIntent().getExtras().getSerializable("us") != null){
 
-            usuario = (Usuario)getIntent().getExtras().getSerializable("us");
-            edtNome.setText(usuario.getLogin());
-            edtEmail.setText(usuario.getEmail());
-            edtTelefone.setText(usuario.getFone());
-            edtSenha.setText(usuario.getSenha());
-            edtRenda.setText(String.valueOf(usuario.getRenda()));
-
-        }*/
 
     }
 
@@ -68,7 +59,7 @@ public class Register extends Activity implements View.OnClickListener {
         btnFinalizarCadastro.setOnClickListener(this);
 
         usuarioDao = new UsuarioDao(this);
-        //usuario = new Usuario();
+
 
         SimpleMaskFormatter FormatarFone = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
         MaskTextWatcher MascaraFone = new MaskTextWatcher(edtTelefone, FormatarFone);

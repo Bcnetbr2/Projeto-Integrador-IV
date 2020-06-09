@@ -26,10 +26,10 @@ public class Profile extends Activity implements View.OnClickListener{
     EditText edtRecebeRenda;
     EditText edtSenhaAtual;
     EditText edtSenhaNova;
-    EditText edtCofirmaNovaSenha;
+
     Button btnSalvarDados;
 
-    //Usuario usuario;
+
     UsuarioDao usuarioDao;
 
 
@@ -120,32 +120,7 @@ public class Profile extends Activity implements View.OnClickListener{
 
         Toast.makeText(this, "Dados salvo com sucesso", Toast.LENGTH_LONG).show();
     }
-  /*  private void receberUsuario(){
 
-        if(getIntent().getExtras().getSerializable("usuario") != null){
-
-            usuario = (Usuario)getIntent().getExtras().getSerializable("usuario");
-            Log.e("Usuario",usuario.getLogin());
-
-        }
-        else{
-            Toast.makeText(this,"não recebido",Toast.LENGTH_LONG).show();
-            Log.e("Usuario","não recebido");
-        }
-
-    }
-    private void enviarUsuario(){
-
-        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(telaLancamento);
-
-
-    }
-
-   */
     public void preencherDados(){
 
         edtRecebeNome.setText(ControleEntidades.getUsuario().getLogin());

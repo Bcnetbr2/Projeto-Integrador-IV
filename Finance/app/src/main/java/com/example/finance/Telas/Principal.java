@@ -28,7 +28,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     ToggleButton tgLancamento;
     ToggleButton tgReport;
     ToggleButton tgProfile;
-    //Usuario usuario;
+
     ListView lsListaLc;
     LancamentoDao lancamentoDao;
     ConverterData converterData = new ConverterData();
@@ -44,8 +44,8 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        Log.e("Usuario", ControleEntidades.getUsuario().getLogin());
-        //receberUsuario();
+
+
 
 
 }
@@ -75,44 +75,43 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if (v == tgLancamento){
             entrarLancamento();
-            finish();
+            //finish();
         }
         else if (v == tgReport){
             entrarReport();
-            finish();
+            //finish();
             }
         else if (v == tgProfile){
             entrarProfile();
-            finish();
+           // finish();
         }
     }
 
     private void entrarLancamento(){
         Intent adicionarCategoria = new Intent(this, Tela_Lancamento.class);
         startActivity(adicionarCategoria);
-        finish();
-        //enviarUsuario();
+        //finish();
+
     }
 
     private void entrarReport(){
         Intent report = new Intent(this, Report.class);
         startActivity(report);
-       // enviarUsuario2();
+
     }
 
     private void entrarProfile(){
         Intent profile = new Intent(this, Profile.class);
         startActivity(profile);
-        //enviarUsuarioPerfil();
+
     }
     private void atualizarLista() throws ParseException {
 
         Date dataFinal = new Date();
         Date dataFinalZ = converterData.gerarDataFinal2(converterData.formataDataString2(dataFinal));
-        Log.e("Usuario", "Data" + dataFinalZ);
+
         Date dataInicial = converterData.gerarDataInicial2(converterData.formataDataString2(dataFinalZ));
-        Log.e("Usuario", "Data" + dataInicial);
-        Log.e("Usuario", "Data" + ControleEntidades.getUsuario().getId());
+
         List<Lancamento> lancamentos = lancamentoDao.listarLancUsuario(ControleEntidades.getUsuario().getId(),dataInicial,dataFinalZ);
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lsListaLc.setAdapter(adapter);
@@ -134,64 +133,10 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         Lancamento lancamento = (Lancamento)lsListaLc.getAdapter().getItem(position);
         ControleEntidades.setLancamento(lancamento);
         ControleEntidades.setStatus("ativo");
-        //Log.e("Lançamento",ControleEntidades.getLancamento().getUsuario().getLogin());
-        //Log.e("Lançamento",ControleEntidades.getLancamento().getTipo());
-        //Log.e("Lançamento",ControleEntidades.getLancamento().getCategoria().getDescricao());
-        //Log.e("Lançamento",ControleEntidades.getLancamento().getFornecedor().getNome());
-        //Log.e("Lançamento",String.valueOf(ControleEntidades.getLancamento().getData()));
-        //Log.e("Lançamento",ControleEntidades.getLancamento().getUsuario().getLogin());
 
         Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
         startActivity(telaLancamento);
 
     }
 
-    /*private void receberUsuario(){
-
-        if(getIntent().getExtras().getSerializable("usuario") != null){
-
-            usuario = (Usuario)getIntent().getExtras().getSerializable("usuario");
-
-        }
-        else{
-            Toast.makeText(this,"não recebido",Toast.LENGTH_LONG).show();
-            Log.e("Usuario","não recebido");
-        }
-
-    }
-    /*
-     */
-    /*private void enviarUsuario(){
-
-        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(telaLancamento);
-
-    }
-
-     */
-    /*private void enviarUsuario2(){
-
-        Intent telaLancamento = new Intent(this,Report.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(telaLancamento);
-
-    }
-
-     */
-    /*private void enviarUsuarioPerfil(){
-
-        Intent telaLancamento = new Intent(this,Profile.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(telaLancamento);
-
-    }
-
-     */
 }

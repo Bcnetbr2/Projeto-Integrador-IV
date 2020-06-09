@@ -113,13 +113,10 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("StatusFilltro",ControleEntidades.getStatusFiltro());
+
         if(ControleEntidades.getStatusFiltro().equals("ativo")){
             try {
-                Log.e("Data Inicial","Data: " + ControleEntidades.getDataInicial());
-                Log.e("Data Final","Data: " + ControleEntidades.getDataFinal());
-                Log.e("Nome categoria","Nome: " + ControleEntidades.getCategoria().getDescricao());
-                Log.e("StatusFilltro",ControleEntidades.getStatusFiltro());
+
                 atualizarListaFiltro();
 
             } catch (ParseException e) {
@@ -167,31 +164,5 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
 
     }
 
-    /*
-    private void receberUsuario(){
 
-        if(getIntent().getExtras().getSerializable("usuario") != null){
-
-            usuario = (Usuario)getIntent().getExtras().getSerializable("usuario");
-            Log.e("Usuario",usuario.getLogin());
-
-        }
-        else{
-            Toast.makeText(this,"não recebido",Toast.LENGTH_LONG).show();
-            Log.e("Usuario","não recebido");
-        }
-
-    }
-    private void enviarUsuario(){
-
-        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
-        Bundle extras = new Bundle();
-        extras.putSerializable("usuario",usuario);
-        telaLancamento.putExtras(extras);
-        startActivity(telaLancamento);
-
-
-    }
-
-     */
 }

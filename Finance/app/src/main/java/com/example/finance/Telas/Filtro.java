@@ -16,6 +16,8 @@ import com.example.finance.R;
 import com.example.finance.configDaos.CategoriaDao;
 import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Categoria;
+import com.github.rtoshiro.util.format.SimpleMaskFormatter;
+import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.text.ParseException;
 import java.util.List;
@@ -55,6 +57,14 @@ public class Filtro extends Activity implements View.OnClickListener{
         atualizarCategoriaFiltro();
         converterData = new ConverterData();
 
+        SimpleMaskFormatter FormatarDataInicial = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher MascaraDataInicial = new MaskTextWatcher(edtDataInicial, FormatarDataInicial);
+        edtDataInicial.addTextChangedListener(MascaraDataInicial);
+
+        SimpleMaskFormatter FormatarDataFinal = new SimpleMaskFormatter("NN/NN/NNNN");
+        MaskTextWatcher MascaraDataFinal = new MaskTextWatcher(edtDataFinal, FormatarDataFinal);
+        edtDataFinal.addTextChangedListener(MascaraDataFinal);
+
 
     }
 
@@ -83,16 +93,50 @@ public class Filtro extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        if (v == btnAdicionarFiltro){
-            try {
-                adicionarFiltro();
+        if(Validador()) {
+            if (v == btnAdicionarFiltro) {
+                try {
+                    adicionarFiltro();
 
-            } catch (ParseException e) {
-                e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Toast.makeText(this, "Filtro adicionado com sucesso", Toast.LENGTH_LONG).show();
+                finish();
             }
-            Toast.makeText(this, "Filtro adicionado com sucesso", Toast.LENGTH_LONG).show();
-            finish();
         }
+        else{
+
+            Toast.makeText(this, "O filtro não pode ser adicionado!", Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+    public boolean Validador(){
+
+        boolean validador = true;
+
+        String dataInicial = edtDataInicial.getText().toString();
+        String dataFinal = edtDataFinal.getText().toString();
+
+        if(dataInicial.isEmpty()){
+
+            edtDataInicial.setError("Preencha o campo!");
+            validador = false;
+
+        }
+        else{
+
+            edtDataInicial.setError(null);
+
+        }
+        if(dataFinal.isEmpty()){
+
+            edtDataFinal.setError("Preencha o campo");
+            validador = false;
+
+        }
+        return validador;
 
     }
 }

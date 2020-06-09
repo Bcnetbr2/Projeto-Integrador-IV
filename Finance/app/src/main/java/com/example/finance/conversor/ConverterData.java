@@ -18,10 +18,9 @@ public class ConverterData {
 
     public Date converterStringData(String dataString) throws ParseException {
 
-        SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = formatar.parse(dataString);
+        SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-        return data;
+        return formatar.parse(dataString);
 
     }
 
