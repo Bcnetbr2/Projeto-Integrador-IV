@@ -1,4 +1,4 @@
-package com.example.finance.Controle;
+package com.example.finance.controle;
 
 import android.app.Application;
 

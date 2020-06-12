@@ -11,15 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finance.R;
-import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.conversor.ConverterData;
-import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
-import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 public class Login extends Activity implements View.OnClickListener {
@@ -96,7 +92,7 @@ public class Login extends Activity implements View.OnClickListener {
         Intent telaPrincipal = new Intent(this, Principal.class);
         startActivity(telaPrincipal);
         finish();
-        Log.e("Usuario criado", "Usuario:" + ControleEntidades.getUsuario().getLogin());
+
         overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
     }
 
@@ -143,7 +139,7 @@ public class Login extends Activity implements View.OnClickListener {
 
         public void onLoginSuccess() {
             btnFinalizarLogin.setEnabled(true);
-            //finish();
+
         }
 
         public void onLoginFailed() {

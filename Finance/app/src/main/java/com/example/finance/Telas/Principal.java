@@ -2,7 +2,6 @@ package com.example.finance.Telas;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.finance.R;
 import com.example.finance.adapter.RelAdapter;
 import com.example.finance.configDaos.LancamentoDao;
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Lancamento;
 
@@ -75,22 +74,22 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
     public void onClick(View v) {
         if (v == tgLancamento){
             entrarLancamento();
-            //finish();
+
         }
         else if (v == tgReport){
             entrarReport();
-            //finish();
+
             }
         else if (v == tgProfile){
             entrarProfile();
-           // finish();
+
         }
     }
 
     private void entrarLancamento(){
         Intent adicionarCategoria = new Intent(this, Tela_Lancamento.class);
         startActivity(adicionarCategoria);
-        //finish();
+
 
     }
 

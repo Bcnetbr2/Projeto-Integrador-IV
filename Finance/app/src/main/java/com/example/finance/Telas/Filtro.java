@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.R;
 import com.example.finance.configDaos.CategoriaDao;
 import com.example.finance.conversor.ConverterData;
@@ -79,12 +78,12 @@ public class Filtro extends Activity implements View.OnClickListener{
     private void adicionarFiltro() throws ParseException {
 
         ControleEntidades.setDataInicial(converterData.gerarDataInicial(edtDataInicial.getText().toString()));
-        Log.e("Data Inicial","Data: " + ControleEntidades.getDataInicial());
+
         ControleEntidades.setDataFinal(converterData.gerarDataFinal(edtDataFinal.getText().toString()));
-        Log.e("Data Final","Data: " + ControleEntidades.getDataFinal());
+
         Categoria cat = (Categoria)spCategoriaFiltro.getSelectedItem();
         ControleEntidades.setCategoria(cat);
-        Log.e("Nome categoria","Nome: " + ControleEntidades.getCategoria().getDescricao());
+
 
         ControleEntidades.setStatusFiltro("ativo");
 
@@ -101,7 +100,7 @@ public class Filtro extends Activity implements View.OnClickListener{
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(this, "Filtro adicionado com sucesso", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Filtro adicionado com sucesso!", Toast.LENGTH_LONG).show();
                 finish();
             }
         }

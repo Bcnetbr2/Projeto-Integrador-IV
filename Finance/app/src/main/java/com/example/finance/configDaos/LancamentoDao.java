@@ -6,13 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.finance.configConexao.Conexao;
+import com.example.finance.consulta.ObjetoConsultaCategoria;
+import com.example.finance.consulta.ObjetoConsultaFornecedor;
+import com.example.finance.consulta.ObjetoConsultaMes;
 import com.example.finance.conversor.ConverterData;
-import com.example.finance.entidades.Categoria;
-import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
-import com.example.finance.entidades.Usuario;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -117,7 +116,7 @@ public class LancamentoDao {
     }
     public List<Lancamento> listarLancUsuario(long id_usuario,Date dataInc,Date dataFim) throws ParseException {
 
-        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.nome ,f.id,f.telefone,f.email ,f.UF from lancamento as L \n" +
+        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.id, f.nome, f.telefone,f.email ,f.UF from lancamento as L \n" +
                 "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
                 "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
                 "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n" +
@@ -155,7 +154,7 @@ public class LancamentoDao {
     }
     public List<Lancamento> listarLancFiltro(long id_usuario,String categoria,Date dataInc,Date dataFim) throws ParseException {
 
-        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.nome ,f.id,f.telefone,f.email ,f.UF from lancamento as L \n" +
+        String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.id ,f.nome ,f.telefone,f.email ,f.UF from lancamento as L \n" +
                 "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
                 "INNER JOIN categoria as c ON L.id_categoria = c.id\n" +
                 "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id\n" +
@@ -191,5 +190,74 @@ public class LancamentoDao {
         }
         return lista;
     }
+
+    public List<ObjetoConsultaMes> listarLancFiltroData(long id_usuario) throws ParseException {
+
+        String sql = "Select strftime(\"%m-%Y\",data/1000,'unixepoch') AS mes,sum(valor),tipo as tipo  from lancamento  \n" +
+                "WHERE id_usuario = ? GROUP BY mes,tipo ORDER BY mes DESC";
+        String[] valores = new String[] {String.valueOf(id_usuario)};
+        Cursor c = finance.rawQuery(sql, valores);
+
+        List<ObjetoConsultaMes> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while (c.moveToNext()) {
+
+            ObjetoConsultaMes resultado = new ObjetoConsultaMes();
+            resultado.setMesAno(c.getString(0));
+            resultado.setValorTotalGasto(c.getFloat(1));
+            resultado.setTipo(c.getString(2));
+
+            lista.add(resultado);
+        }
+        return lista;
+    }
+
+    public List<ObjetoConsultaFornecedor> listarLancFiltroDataFornecedor(long id_usuario) throws ParseException {
+
+        String sql = "Select strftime(\"%m-%Y\",L.data/1000,'unixepoch') AS mes,sum(L.valor)AS total,f.nome from lancamento as L\n" +
+                     "INNER JOIN fornecedor as f ON L.id_fornecedor = f.id \n" +
+                     "WHERE L.id_usuario = ? GROUP BY f.nome,mes";
+        String[] valores = new String[] {String.valueOf(id_usuario)};
+        Cursor c = finance.rawQuery(sql, valores);
+
+        List<ObjetoConsultaFornecedor> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while (c.moveToNext()) {
+
+            ObjetoConsultaFornecedor resultado = new ObjetoConsultaFornecedor();
+            resultado.setMes(c.getString(0));
+            resultado.setValor(c.getString(1));
+            resultado.setNomeFornecedor(c.getString(2));
+
+            lista.add(resultado);
+        }
+        return lista;
+    }
+    public List<ObjetoConsultaCategoria> listarLancFiltroDataCategoria(long id_usuario) throws ParseException {
+
+        String sql = "Select strftime(\"%m-%Y\",L.data/1000,'unixepoch') AS mes,sum(L.valor)AS total,c.nome from lancamento as L\n" +
+                "INNER JOIN categoria as c ON L.id_categoria = c.id \n" +
+                "WHERE L.id_usuario = ? GROUP BY c.nome,mes";
+        String[] valores = new String[] {String.valueOf(id_usuario)};
+        Cursor c = finance.rawQuery(sql, valores);
+
+        List<ObjetoConsultaCategoria> lista = new ArrayList<>();
+        ConverterData converterData = new ConverterData();
+
+        while (c.moveToNext()) {
+
+            ObjetoConsultaCategoria resultado = new ObjetoConsultaCategoria();
+            resultado.setMes(c.getString(0));
+            resultado.setValor(c.getString(1));
+            resultado.setNomeCategoria(c.getString(2));
+
+            lista.add(resultado);
+        }
+        return lista;
+    }
+
+
 
 }

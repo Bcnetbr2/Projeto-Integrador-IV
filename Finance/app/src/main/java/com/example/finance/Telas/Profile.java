@@ -11,7 +11,7 @@ import android.widget.ToggleButton;
 
 import com.example.finance.R;
 import com.example.finance.configDaos.UsuarioDao;
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 
 public class Profile extends Activity implements View.OnClickListener{
 
@@ -118,7 +118,7 @@ public class Profile extends Activity implements View.OnClickListener{
 
         long id =  usuarioDao.alterar(ControleEntidades.getUsuario());
 
-        Toast.makeText(this, "Dados salvo com sucesso", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Dados salvos com sucesso!", Toast.LENGTH_LONG).show();
     }
 
     public void preencherDados(){

@@ -3,24 +3,30 @@ package com.example.finance.Telas;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.R;
+import com.example.finance.adapter.CatAdapter;
+import com.example.finance.adapter.FornAdapter;
+import com.example.finance.adapter.MesAdapter;
 import com.example.finance.adapter.RelAdapter;
 import com.example.finance.configDaos.LancamentoDao;
+import com.example.finance.consulta.ObjetoConsultaCategoria;
+import com.example.finance.consulta.ObjetoConsultaFornecedor;
+import com.example.finance.consulta.ObjetoConsultaMes;
+import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 
 public class Report extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener {
@@ -29,9 +35,15 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
     ToggleButton tgAdicionar;
     ToggleButton tgProfile;
     Button btnFiltro;
+    CheckBox ckbMensal;
+    CheckBox ckbFiltroCat;
+    CheckBox ckbFitroForn;
+
     ListView lstListaResultado;
     Usuario usuario;
     LancamentoDao lancamentoDao;
+    TextView txtFiltro;
+    ConverterData converterData = new ConverterData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +76,18 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         lstListaResultado = (ListView)findViewById(R.id.lstResultadoLista);
         lstListaResultado.setOnItemClickListener(this);
 
+        ckbMensal = (CheckBox) findViewById(R.id.ckbMensal);
+        ckbMensal.setOnClickListener(this);
+
+        ckbFiltroCat = (CheckBox) findViewById(R.id.ckbFitroCat);
+        ckbFiltroCat.setOnClickListener(this);
+
+        ckbFitroForn = (CheckBox) findViewById(R.id.ckbFiltroForn);
+        ckbFitroForn.setOnClickListener(this);
+
         lancamentoDao = new LancamentoDao(this);
+
+        txtFiltro = (TextView) findViewById(R.id.txtFiltro);
     }
 
     @Override
@@ -85,6 +108,92 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         else if (v == btnFiltro){
             Intent filtro = new Intent(this, Filtro.class);
             startActivity(filtro);
+        }
+        else if(v == ckbMensal){
+
+            if(ckbMensal.isChecked()){
+
+                btnFiltro.setEnabled(false);
+                ckbFiltroCat.setEnabled(false);
+                ckbFitroForn.setEnabled(false);
+                txtFiltro.setText("");
+                try {
+                    balançoMensal();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else if(!ckbMensal.isChecked()){
+
+                btnFiltro.setEnabled(true);
+                ckbFiltroCat.setEnabled(true);
+                ckbFitroForn.setEnabled(true);
+
+                try {
+                    atualizarLista();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+        else if(v == ckbFiltroCat){
+
+            if(ckbFiltroCat.isChecked()){
+                btnFiltro.setEnabled(false);
+                ckbMensal.setEnabled(false);
+                ckbFitroForn.setEnabled(false);
+                txtFiltro.setText("");
+                try {
+                    filtroPorCat();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            else if(!ckbFiltroCat.isChecked()){
+
+                btnFiltro.setEnabled(true);
+                ckbMensal.setEnabled(true);
+                ckbFitroForn.setEnabled(true);
+                try {
+                    atualizarLista();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+        }
+        else if(v == ckbFitroForn){
+
+            if(ckbFitroForn.isChecked()){
+
+                btnFiltro.setEnabled(false);
+                ckbMensal.setEnabled(false);
+                ckbFiltroCat.setEnabled(false);
+                txtFiltro.setText("");
+                try {
+                    filtroPorForn();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(!ckbFitroForn.isChecked()){
+
+                btnFiltro.setEnabled(true);
+                ckbMensal.setEnabled(true);
+                ckbFiltroCat.setEnabled(true);
+                try {
+                    atualizarLista();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
         }
 
     }
@@ -118,6 +227,7 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
             try {
 
                 atualizarListaFiltro();
+                txtFiltro.setText("Periodo pesquisado: " + converterData.formataDataString2(ControleEntidades.getDataInicial()) + " até "+ converterData.formataDataString2(ControleEntidades.getDataFinal()));
 
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -139,27 +249,64 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         List<Lancamento> lancamentos = lancamentoDao.listar(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lstListaResultado.setAdapter(adapter);
+
+
+
     }
     private void atualizarListaFiltro() throws ParseException {
 
-        List<Lancamento> lancamentos = lancamentoDao.listarLancFiltro(ControleEntidades.getUsuario().getId(),ControleEntidades.getCategoria().getDescricao(),ControleEntidades.getDataInicial(),ControleEntidades.getDataFinal());
+       List<Lancamento> lancamentos = lancamentoDao.listarLancFiltro(ControleEntidades.getUsuario().getId(),ControleEntidades.getCategoria().getDescricao(),ControleEntidades.getDataInicial(),ControleEntidades.getDataFinal());
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lstListaResultado.setAdapter(adapter);
         ControleEntidades.setStatusFiltro("inativo");
 
 
+
+
+
     }
 
+    private void balançoMensal() throws ParseException {
+
+
+
+        List<ObjetoConsultaMes> resultado = lancamentoDao.listarLancFiltroData(ControleEntidades.getUsuario().getId());
+        ArrayAdapter adapter = new MesAdapter(this,resultado);
+        lstListaResultado.setAdapter(adapter);
+
+    }
+
+    private void filtroPorCat() throws ParseException {
+
+
+
+        List<ObjetoConsultaCategoria> resultado = lancamentoDao.listarLancFiltroDataCategoria(ControleEntidades.getUsuario().getId());
+        ArrayAdapter adapter = new CatAdapter(this,resultado);
+        lstListaResultado.setAdapter(adapter);
+
+    }
+
+    private void filtroPorForn() throws ParseException {
+
+
+
+        List<ObjetoConsultaFornecedor> resultado = lancamentoDao.listarLancFiltroDataFornecedor(ControleEntidades.getUsuario().getId());
+        ArrayAdapter adapter = new FornAdapter(this,resultado);
+        lstListaResultado.setAdapter(adapter);
+
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        Lancamento lancamento = (Lancamento)lstListaResultado.getAdapter().getItem(position);
-        ControleEntidades.setLancamento(lancamento);
-        ControleEntidades.setStatus("ativo");
+        if(!ckbMensal.isChecked() && !ckbFiltroCat.isChecked() && !ckbFitroForn.isChecked()) {
+            Lancamento lancamento = (Lancamento) lstListaResultado.getAdapter().getItem(position);
+            ControleEntidades.setLancamento(lancamento);
+            ControleEntidades.setStatus("ativo");
 
-        Intent telaLancamento = new Intent(this,Tela_Lancamento.class);
-        startActivity(telaLancamento);
+            Intent telaLancamento = new Intent(this, Tela_Lancamento.class);
+            startActivity(telaLancamento);
+        }
 
 
     }

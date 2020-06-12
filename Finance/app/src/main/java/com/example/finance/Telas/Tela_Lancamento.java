@@ -20,7 +20,7 @@ import com.example.finance.configDaos.LancamentoDao;
 import com.example.finance.configDaos.UsuarioDao;
 import com.example.finance.conversor.ConverterData;
 import com.example.finance.entidades.Categoria;
-import com.example.finance.Controle.ControleEntidades;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
 
@@ -175,6 +175,8 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     protected void onResume() {
         super.onResume();
 
+        atualizarCategoria();
+        atualizarFornecedor();
 
     }
 
@@ -307,14 +309,14 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
 
         if(ControleEntidades.getStatus().equals("vazio")) {
 
-            Toast.makeText(this, "Não foi possivel excluir o lançamento realizado com sucesso", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Não foi possivel excluir o lançamento!", Toast.LENGTH_LONG).show();
             finish();
         }
         else if(ControleEntidades.getStatus().equals("ativo")){
 
             long id = lancamentoDao.excluir(lancamento);
 
-            Toast.makeText(this, "Lançamento excluido com sucesso", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Lançamento excluido com sucesso!", Toast.LENGTH_LONG).show();
             ControleEntidades.setStatus("vazio");
             finish();
         }

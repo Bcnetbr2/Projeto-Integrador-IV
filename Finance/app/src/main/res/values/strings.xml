@@ -15,4 +15,22 @@
     <string name="categoriaFiltro">Categoria</string>
     <string name="tituloFiltro">Filtro</string>
 
+    <string name="mesAno">Mês</string>
+    <string name="valorTotal">Valor total</string>
+    <string name="tipoLanc">Tipo</string>
+
+    <string name="mesAnoCat">Mês</string>
+    <string name="valorTotalcat">Valor total</string>
+    <string name="nomeCat">Categoria</string>
+
+    <string name="mesAnoForn">Mês</string>
+    <string name="valorTotalForn">Valor total</string>
+    <string name="nomeForn">Fornecedor</string>
+
+
+
+    <string name="mes">Por mês</string>
+    <string name="filtroCat">Por categoria</string>
+    <string name="filtroForn">Por fornecedor</string>
+
 </resources>

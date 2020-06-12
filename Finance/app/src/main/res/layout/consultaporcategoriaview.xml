@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="@string/mesAnoCat"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
+            app:layout_constraintEnd_toStartOf="@+id/textView19"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="@string/valorTotalcat"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintEnd_toStartOf="@+id/textView20"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="@string/nomeCat"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView19" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtMesCat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="TextView"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtValorCat"
+            app:layout_constraintEnd_toStartOf="@+id/txtValorCat"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtValorCat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="TextView"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintEnd_toStartOf="@+id/txtNomeCat"
+            app:layout_constraintStart_toEndOf="@+id/txtMesCat"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtNomeCat"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/AmareloOuro"
+            android:text="TextView"
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtValorCat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtValorCat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

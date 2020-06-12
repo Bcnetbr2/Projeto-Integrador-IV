@@ -12,7 +12,8 @@
         android:background="@color/AmareloOuro"
         android:fontFamily="@font/montserrat"
         android:text="TextView"
-        android:textColor="@color/Branco"
+        android:textAlignment="gravity"
+        android:textColor="@color/VerdeDinheiro"
         android:textColorHint="#FFFFFF" />
 
     <LinearLayout
@@ -27,7 +28,8 @@
             android:background="@color/AmareloOuro"
             android:fontFamily="@font/montserrat"
             android:text="TextView"
-            android:textColor="@color/Branco" />
+            android:textAlignment="gravity"
+            android:textColor="@color/VerdeDinheiro" />
 
         <TextView
             android:id="@+id/txtValorLc"
@@ -36,8 +38,10 @@
             android:layout_weight="1"
             android:background="@color/AmareloOuro"
             android:fontFamily="@font/montserrat"
+            android:gravity="right"
             android:text="TextView"
-            android:textColor="@color/Branco"
+            android:textAlignment="gravity"
+            android:textColor="@color/VerdeDinheiro"
             android:textColorHint="#FFFFFF" />
     </LinearLayout>
 </LinearLayout>
