@@ -103,7 +103,7 @@ public class Register extends Activity implements View.OnClickListener {
             usuario.setRenda(Float.parseFloat(edtRenda.getText().toString()));
 
             long id = usuarioDao.inserir(usuario);
-            Toast.makeText(this,"O usuario: " + usuario.getLogin() + "foi inserido com sucesso!" ,Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"O usuario: " + usuario.getLogin() + " foi inserido com sucesso!" ,Toast.LENGTH_LONG).show();
 
             Intent finalizarcadastro = new Intent(this, Login.class);
             startActivity(finalizarcadastro);

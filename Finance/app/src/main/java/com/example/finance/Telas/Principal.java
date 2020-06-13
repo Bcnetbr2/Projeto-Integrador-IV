@@ -53,7 +53,7 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
         tgHome = (ToggleButton) findViewById(R.id.tgHome);
         tgHome.setOnClickListener(this);
 
-        tgLancamento = (ToggleButton) findViewById(R.id.tgLancamento);
+        tgLancamento = (ToggleButton) findViewById(R.id.tgAdd);
         tgLancamento.setOnClickListener(this);
 
         tgReport = (ToggleButton) findViewById(R.id.tgReport);
