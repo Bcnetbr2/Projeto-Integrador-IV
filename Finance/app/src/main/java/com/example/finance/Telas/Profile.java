@@ -147,7 +147,7 @@ public class Profile extends Activity implements View.OnClickListener{
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            edtRecebeEmail.setError("Insira um e-mail valido");
+            edtRecebeEmail.setError("Insira um e-mail valido!");
             valid = false;
         } else {
             edtRecebeEmail.setError(null);
