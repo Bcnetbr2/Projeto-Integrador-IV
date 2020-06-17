@@ -22,9 +22,8 @@ public class CategoriaDao {
 
         conexao = new Conexao(context);
         finance = conexao.getWritableDatabase();
-
     }
-
+    // preenchendo valores na tabela Categoria, com as informações preenchidas no app
     private ContentValues preencherValores(Categoria categoria){
 
         ContentValues values = new ContentValues();
@@ -33,27 +32,27 @@ public class CategoriaDao {
 
         return values;
     }
-
+    // Inserindo os dados cadastrado na tebela do banco
     public long inserir(Categoria categoria){
 
         ContentValues values = preencherValores(categoria);
         return finance.insert(TABELA,null,values);
 
     }
-
+    // alterar dados da categoria cadastrada
     public long alterar(Categoria categoria){
 
         ContentValues values = preencherValores(categoria);
         return finance.update(TABELA,values,"id = ?", new String[] {String.valueOf(categoria.getId())});
 
     }
-
+    // Excluindo dados da categoria cadastrada
     public long excluir(Categoria categoria){
 
         return finance.delete(TABELA,"id = ?", new String[] {String.valueOf(categoria.getId())});
 
     }
-
+    // Carrega a lista no spinner com as categorias cadastradas no banco
     public List<Categoria> listar(){
 
         Cursor c = finance.query(TABELA, CAMPOS,null,null,null,null,null);

@@ -23,13 +23,13 @@ public class CatAdapter extends ArrayAdapter<ObjetoConsultaCategoria> {
     private final List<ObjetoConsultaCategoria> elementos;
     private ConverterData cd = new ConverterData();
 
-
+    //Criando uma lista com elementos filtrados por categoria.
     public CatAdapter(Context context, List<ObjetoConsultaCategoria> elementos) {
         super(context, R.layout.consultaporcategoriaview,elementos);
         this.context = context;
         this.elementos = elementos;
     }
-
+    //Colocando quais valores será mostrado na lista
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.consultaporcategoriaview, parent, false);

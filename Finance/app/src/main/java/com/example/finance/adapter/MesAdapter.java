@@ -21,13 +21,13 @@ public class MesAdapter extends ArrayAdapter<ObjetoConsultaMes> {
     private final List<ObjetoConsultaMes> elementos;
     private ConverterData cd = new ConverterData();
 
-
+    // criando uma lista com filtros de mes e ano
     public MesAdapter(Context context, List<ObjetoConsultaMes> elementos) {
         super(context, R.layout.consultamesanoview,elementos);
         this.context = context;
         this.elementos = elementos;
     }
-
+    // colocando quais valores serão apresentados para o usuario com o filtro
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.consultamesanoview, parent, false);

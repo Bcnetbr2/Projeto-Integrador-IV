@@ -19,7 +19,6 @@ public class Profile extends Activity implements View.OnClickListener{
     ToggleButton tgAdicionar;
     ToggleButton tgReport;
 
-
     EditText edtRecebeNome;
     EditText edtRecebeEmail;
     EditText edtRecebeTele;
@@ -29,9 +28,7 @@ public class Profile extends Activity implements View.OnClickListener{
 
     Button btnSalvarDados;
 
-
     UsuarioDao usuarioDao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,8 +129,6 @@ public class Profile extends Activity implements View.OnClickListener{
         edtRecebeTele.setText(ControleEntidades.getUsuario().getFone());
         edtRecebeRenda.setText(String.valueOf(ControleEntidades.getUsuario().getRenda()));
         edtSenhaAtual.setText(ControleEntidades.getUsuario().getSenha());
-
-
 
     }
     public boolean validate() {

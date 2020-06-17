@@ -24,7 +24,7 @@ public class UsuarioDao {
         finance = conexao.getWritableDatabase();
 
     }
-
+    //preenche os valores de usuario no banco
     private ContentValues preencherValores(Usuario usuario){
 
         ContentValues values = new ContentValues();
@@ -37,27 +37,27 @@ public class UsuarioDao {
 
         return values;
     }
-
+    //cadastra um novo usuario no banco
     public long inserir(Usuario usuario){
 
         ContentValues values = preencherValores(usuario);
         return finance.insert(TABELA,null,values);
 
     }
-
+    //Altera um usuario no banco
     public long alterar(Usuario usuario){
 
         ContentValues values = preencherValores(usuario);
         return finance.update(TABELA,values,"id = ?", new String[] {String.valueOf(usuario.getId())});
 
     }
-
+    //Exclui um usuario no banco
     public long excluir(Usuario usuario){
 
         return finance.delete(TABELA,"id = ?", new String[] {String.valueOf(usuario.getId())});
 
     }
-
+    //criar um array para listar os usuarios no banco
     public List<Usuario> listar(){
 
         Cursor c = finance.query(TABELA, CAMPOS,null,null,null,null,null);
@@ -76,7 +76,7 @@ public class UsuarioDao {
         return lista;
     }
 
-
+    //pesquisa o usuario, e verifica se existe
     public List<Usuario> PesquisarUsuario(String login, String senha){
 
         Cursor c = finance.query(TABELA, CAMPOS,"login=? and senha=?",new String[]{login,senha},null,null,null);

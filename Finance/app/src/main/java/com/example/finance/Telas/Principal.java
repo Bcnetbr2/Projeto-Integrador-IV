@@ -44,9 +44,6 @@ public class Principal extends AppCompatActivity implements View.OnClickListener
             e.printStackTrace();
         }
 
-
-
-
 }
 
     private void variaveis() throws ParseException {

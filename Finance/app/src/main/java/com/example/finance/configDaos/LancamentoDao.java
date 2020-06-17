@@ -39,7 +39,7 @@ public class LancamentoDao {
 
 
     }
-
+    // preenchendo valores no banco com os dados cadastrados no lançamento
     private ContentValues preencherValores(Lancamento lancamento){
 
         ContentValues values = new ContentValues();
@@ -55,27 +55,27 @@ public class LancamentoDao {
 
         return values;
     }
-
+    // inserindo no banco os dados cadastrados em lançamento
     public long inserir(Lancamento lancamento){
 
         ContentValues values = preencherValores(lancamento);
         return finance.insert(TABELA,null,values);
 
     }
-
+    // Alterar no banco os dados cadastrados em lançamento
     public long alterar(Lancamento lancamento){
 
         ContentValues values = preencherValores(lancamento);
         return finance.update(TABELA,values,"id = ?", new String[] {String.valueOf(lancamento.getId())});
 
     }
-
+    // Excluir no banco os dados cadastrados em lançamento
     public long excluir(Lancamento lancamento){
 
         return finance.delete(TABELA,"id = ?", new String[] {String.valueOf(lancamento.getId())});
 
     }
-
+    //listando na tela principal e no relatorio os dados cadastrados na pagina de lançamento por cada usuario
     public List<Lancamento> listar(long id_usuario) throws ParseException {
         String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao, u.id, u.login, u.senha, u.email, u.fone, u.renda, c.id, c.nome , f.id, f.nome, f.telefone, f.email as email, UF from lancamento as L \n" +
                 "INNER JOIN usuario as u ON L.id_usuario = u.id\n" +
@@ -88,6 +88,7 @@ public class LancamentoDao {
         List<Lancamento> lista = new ArrayList<>();
         ConverterData converterData = new ConverterData();
 
+        // pegando cada dado por usuario, categoria e fornecedor, para que dois usuarios não vejam o que outro cadastrou
         while(c.moveToNext()){
             Lancamento lancamento = new Lancamento();
             lancamento.setId(c.getLong(0));
@@ -114,6 +115,7 @@ public class LancamentoDao {
         }
         return lista;
     }
+    // listar lançamentos por usuario
     public List<Lancamento> listarLancUsuario(long id_usuario,Date dataInc,Date dataFim) throws ParseException {
 
         String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.id, f.nome, f.telefone,f.email ,f.UF from lancamento as L \n" +
@@ -152,6 +154,7 @@ public class LancamentoDao {
         }
         return lista;
     }
+    //filtro para cada usuario
     public List<Lancamento> listarLancFiltro(long id_usuario,String categoria,Date dataInc,Date dataFim) throws ParseException {
 
         String sql = "Select L.id, L.tipo, L.data, L.valor, L.descricao,u.id,u.login,u.senha,u.email,u.fone,u.renda,c.id,c.nome ,f.id ,f.nome ,f.telefone,f.email ,f.UF from lancamento as L \n" +
@@ -190,7 +193,7 @@ public class LancamentoDao {
         }
         return lista;
     }
-
+    //Filtro por data por cada usuario
     public List<ObjetoConsultaMes> listarLancFiltroData(long id_usuario) throws ParseException {
 
         String sql = "Select strftime(\"%m-%Y\",data/1000,'unixepoch') AS mes,sum(valor),tipo as tipo  from lancamento  \n" +
@@ -212,7 +215,7 @@ public class LancamentoDao {
         }
         return lista;
     }
-
+    //filtro de fornecedor por cada usuario
     public List<ObjetoConsultaFornecedor> listarLancFiltroDataFornecedor(long id_usuario) throws ParseException {
 
         String sql = "Select strftime(\"%m-%Y\",L.data/1000,'unixepoch') AS mes,sum(L.valor)AS total,f.nome from lancamento as L\n" +
@@ -235,6 +238,7 @@ public class LancamentoDao {
         }
         return lista;
     }
+    //filtro por data e categoria por usuario
     public List<ObjetoConsultaCategoria> listarLancFiltroDataCategoria(long id_usuario) throws ParseException {
 
         String sql = "Select strftime(\"%m-%Y\",L.data/1000,'unixepoch') AS mes,sum(L.valor)AS total,c.nome from lancamento as L\n" +

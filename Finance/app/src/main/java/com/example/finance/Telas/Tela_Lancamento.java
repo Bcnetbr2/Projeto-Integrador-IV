@@ -29,6 +29,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Tela_Lancamento extends Activity implements View.OnClickListener{
+
     //Componentes da tela
     EditText edtAddCategoria;
     EditText edtValorGasto;
@@ -54,13 +55,9 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     ConverterData dc;
     Button btnMostrarFornecedor;
     UsuarioDao usuarioDao;
-    //Usuario usuario;
+
     LancamentoDao lancamentoDao;
-    //Button btnAdicionar;
 
-    //Button btnAdicionarMais;
-
-    //Botões do menu
     ToggleButton tgHome;
     ToggleButton tgReport;
     ToggleButton tgProfile;
@@ -81,7 +78,6 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
             atualizarFornecedor2();
             preecherValores();
         }
-
 
     }
 
@@ -123,7 +119,6 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         categoriaDao = new CategoriaDao(this);
         fornecedorDao = new FornecedorDao(this);
         lancamentoDao = new LancamentoDao(this);
-
 
         //Botôes menu
         tgHome = (ToggleButton) findViewById(R.id.tgHome);
@@ -235,9 +230,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
 
        }
 
-
     }
-
 
     private void entrarReport(){
         Intent report = new Intent(this, Report.class);

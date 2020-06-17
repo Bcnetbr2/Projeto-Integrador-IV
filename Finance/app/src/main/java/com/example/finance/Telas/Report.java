@@ -60,7 +60,6 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
             e.printStackTrace();
         }
 
-
     }
 
     private void variaveis(){
@@ -95,7 +94,6 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         txtCampoNome = (TextView) findViewById(R.id.txtCampoNome);
         txtCampoMes = (TextView) findViewById(R.id.txtCampoMes);
         txtCampoValor = (TextView) findViewById(R.id.txtCampoValor);
-
 
     }
 
@@ -262,8 +260,6 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         txtCampoMes.setText("Mes/Ano");
         txtCampoValor.setText("Valor");
 
-
-
     }
     private void atualizarListaFiltro() throws ParseException {
 
@@ -275,12 +271,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         txtCampoMes.setText("Mes/Ano");
         txtCampoValor.setText("Valor");
 
-
     }
 
     private void balançoMensal() throws ParseException {
-
-
 
         List<ObjetoConsultaMes> resultado = lancamentoDao.listarLancFiltroData(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new MesAdapter(this,resultado);
@@ -293,8 +286,6 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
 
     private void filtroPorCat() throws ParseException {
 
-
-
         List<ObjetoConsultaCategoria> resultado = lancamentoDao.listarLancFiltroDataCategoria(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new CatAdapter(this,resultado);
         lstListaResultado.setAdapter(adapter);
@@ -305,8 +296,6 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
     }
 
     private void filtroPorForn() throws ParseException {
-
-
 
         List<ObjetoConsultaFornecedor> resultado = lancamentoDao.listarLancFiltroDataFornecedor(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new FornAdapter(this,resultado);

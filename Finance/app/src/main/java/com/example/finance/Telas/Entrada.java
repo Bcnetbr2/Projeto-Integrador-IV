@@ -28,8 +28,6 @@ public class Entrada extends AppCompatActivity implements View.OnClickListener {
 
         variaveis();
 
-
-
     }
 
     private void variaveis(){

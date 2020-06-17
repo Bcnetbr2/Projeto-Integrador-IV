@@ -43,9 +43,6 @@ public class AdicionarFornecedor extends Activity implements View.OnClickListene
            edtUfFornecedor.setText(ControleEntidades.getFornecedor().getUf());
            btnAdicionarFornecedor.setText("FECHAR");
 
-
-
-
        }
 
 
@@ -71,8 +68,6 @@ private void variaveis(){
     SimpleMaskFormatter FormatarUF = new SimpleMaskFormatter("LL");
     MaskTextWatcher MascaraUF = new MaskTextWatcher(edtUfFornecedor, FormatarUF);
     edtUfFornecedor.addTextChangedListener(MascaraUF);
-
-
 
 }
 

@@ -24,7 +24,7 @@ public class FornecedorDao {
         finance = conexao.getWritableDatabase();
 
     }
-
+    // preenchendo valores no banco, com os dados inseridos no cadastro de fornecedor
     private ContentValues preencherValores(Fornecedor fornecedor){
 
         ContentValues values = new ContentValues();
@@ -36,27 +36,27 @@ public class FornecedorDao {
 
         return values;
     }
-
+    // inserindo no banco os dados cadastrados em fornecedor
     public long inserir(Fornecedor fornecedor){
 
         ContentValues values = preencherValores(fornecedor);
         return finance.insert(TABELA,null,values);
 
     }
-
+    // Alterar no banco os dados cadastrados em fornecedor
     public long alterar(Fornecedor fornecedor){
 
         ContentValues values = preencherValores(fornecedor);
         return finance.update(TABELA,values,"id = ?", new String[] {String.valueOf(fornecedor.getId())});
 
     }
-
+    // Excluir no banco os dados cadastrados em fornecedor
     public long excluir(Fornecedor fornecedor){
 
         return finance.delete(TABELA,"id = ?", new String[] {String.valueOf(fornecedor.getId())});
 
     }
-
+    // listando no spinner os fornecedores cadastrados
     public List<Fornecedor> listar(){
 
         Cursor c = finance.query(TABELA, CAMPOS,null,null,null,null,null);

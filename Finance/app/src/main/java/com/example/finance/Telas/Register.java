@@ -30,16 +30,12 @@ public class Register extends Activity implements View.OnClickListener {
 
     UsuarioDao usuarioDao;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
         variaveis();
-
-
 
     }
 
@@ -59,7 +55,6 @@ public class Register extends Activity implements View.OnClickListener {
         btnFinalizarCadastro.setOnClickListener(this);
 
         usuarioDao = new UsuarioDao(this);
-
 
         SimpleMaskFormatter FormatarFone = new SimpleMaskFormatter("(NN)NNNNN-NNNN");
         MaskTextWatcher MascaraFone = new MaskTextWatcher(edtTelefone, FormatarFone);
@@ -111,17 +106,7 @@ public class Register extends Activity implements View.OnClickListener {
 
         btnFinalizarCadastro.setEnabled(false);
 
-
-
-
-
-        // TODO: Implement your own signup logic here.
-
-
     }
-
-
-
 
     public void onSignupSuccess() {
         btnFinalizarCadastro.setEnabled(true);
