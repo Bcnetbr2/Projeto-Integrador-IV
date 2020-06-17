@@ -8,11 +8,12 @@ android:background="@color/VerdeDinheiro"
 android:orientation="vertical"
 tools:context=".Telas.Entrada">
 
-<ImageView
-    android:id="@+id/imageView"
-    android:layout_width="match_parent"
-    android:layout_height="508dp"
-    app:srcCompat="@drawable/porquinho" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/porquinho" />
 
 <LinearLayout
     android:layout_width="match_parent"

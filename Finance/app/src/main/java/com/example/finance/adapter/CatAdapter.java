@@ -40,7 +40,13 @@ public class CatAdapter extends ArrayAdapter<ObjetoConsultaCategoria> {
         NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
 
         mes.setText(elementos.get(position).getMes());
-        valor.setText(formato.format(elementos.get(position).getValor()));
+        try {
+            valor.setText(formato.format(elementos.get(position).getValor()));
+        }catch(Exception e){
+
+            valor.setText(String.valueOf(elementos.get(position).getValor()));
+
+        }
         nome.setText(elementos.get(position).getNomeCategoria());
 
         return rowView;

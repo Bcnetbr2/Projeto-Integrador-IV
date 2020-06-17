@@ -9,16 +9,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="60dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <ToggleButton
             android:id="@+id/tgHome"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
-            android:layout_marginStart="50dp"
             android:background="@drawable/toggle_background"
             android:button="@drawable/home"
             android:scrollbars="none"
@@ -27,7 +26,7 @@
         <ToggleButton
             android:id="@+id/tgReport"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
             android:layout_marginStart="20dp"
             android:background="@drawable/report"
@@ -37,8 +36,8 @@
 
         <ToggleButton
             android:id="@+id/tgAdd"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
             android:layout_marginStart="20dp"
             android:background="@drawable/add"
@@ -49,7 +48,7 @@
         <ToggleButton
             android:id="@+id/tgProfile"
             android:layout_width="60dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
             android:layout_gravity="clip_horizontal"
             android:layout_marginStart="20dp"
             android:background="@drawable/profile"
@@ -62,42 +61,40 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="29dp"
+        android:layout_marginLeft="60dp"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="26dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="65dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="Home"
             android:textColor="#000000" />
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="33dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:text="Relatorio"
             android:textColor="#000000" />
 
         <TextView
             android:id="@+id/textView13"
-            android:layout_width="42dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:text="Adicionar"
             android:textColor="#000000" />
 
         <TextView
             android:id="@+id/textView15"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="60dp"
-            android:layout_weight="1"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:text="Perfil"
             android:textColor="#000000" />
@@ -127,7 +124,7 @@
     <Spinner
         android:id="@+id/spTipos"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="37dp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp" />
 
@@ -186,7 +183,7 @@
 
         <Spinner
             android:id="@+id/spFornecedor"
-            android:layout_width="330dp"
+            android:layout_width="313dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="50dp" />
 
@@ -223,7 +220,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Data"
         android:inputType="date" />
@@ -243,7 +239,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="50dp"
         android:ems="10"
         android:gravity="start|top"
@@ -252,7 +248,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="93dp"
+        android:layout_height="90dp"
         android:orientation="horizontal">
 
         <Button

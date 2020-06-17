@@ -38,6 +38,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
     CheckBox ckbMensal;
     CheckBox ckbFiltroCat;
     CheckBox ckbFitroForn;
+    TextView txtCampoNome;
+    TextView txtCampoMes;
+    TextView txtCampoValor;
 
     ListView lstListaResultado;
     Usuario usuario;
@@ -88,6 +91,12 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         lancamentoDao = new LancamentoDao(this);
 
         txtFiltro = (TextView) findViewById(R.id.txtFiltro);
+
+        txtCampoNome = (TextView) findViewById(R.id.txtCampoNome);
+        txtCampoMes = (TextView) findViewById(R.id.txtCampoMes);
+        txtCampoValor = (TextView) findViewById(R.id.txtCampoValor);
+
+
     }
 
     @Override
@@ -249,6 +258,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         List<Lancamento> lancamentos = lancamentoDao.listar(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lstListaResultado.setAdapter(adapter);
+        txtCampoNome.setText("Fornecedor");
+        txtCampoMes.setText("Mes/Ano");
+        txtCampoValor.setText("Valor");
 
 
 
@@ -259,9 +271,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         ArrayAdapter adapter = new RelAdapter(this,lancamentos);
         lstListaResultado.setAdapter(adapter);
         ControleEntidades.setStatusFiltro("inativo");
-
-
-
+        txtCampoNome.setText("Fornecedor");
+        txtCampoMes.setText("Mes/Ano");
+        txtCampoValor.setText("Valor");
 
 
     }
@@ -273,6 +285,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         List<ObjetoConsultaMes> resultado = lancamentoDao.listarLancFiltroData(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new MesAdapter(this,resultado);
         lstListaResultado.setAdapter(adapter);
+        txtCampoNome.setText("Tipo");
+        txtCampoMes.setText("Mes/Ano");
+        txtCampoValor.setText("Valor");
 
     }
 
@@ -283,6 +298,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         List<ObjetoConsultaCategoria> resultado = lancamentoDao.listarLancFiltroDataCategoria(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new CatAdapter(this,resultado);
         lstListaResultado.setAdapter(adapter);
+        txtCampoNome.setText("Categoria");
+        txtCampoMes.setText("Mes/Ano");
+        txtCampoValor.setText("Valor");
 
     }
 
@@ -293,6 +311,9 @@ public class Report extends Activity implements View.OnClickListener, AdapterVie
         List<ObjetoConsultaFornecedor> resultado = lancamentoDao.listarLancFiltroDataFornecedor(ControleEntidades.getUsuario().getId());
         ArrayAdapter adapter = new FornAdapter(this,resultado);
         lstListaResultado.setAdapter(adapter);
+        txtCampoNome.setText("Fornecedor");
+        txtCampoMes.setText("Mes/Ano");
+        txtCampoValor.setText("Valor");
 
     }
 

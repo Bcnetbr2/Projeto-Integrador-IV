@@ -33,7 +33,7 @@ public class FornAdapter extends ArrayAdapter<ObjetoConsultaFornecedor> {
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.consultaporfornecedorview, parent, false);
-        TextView mes = (TextView) rowView.findViewById(R.id.txtMesForn);
+        TextView mes = (TextView) rowView.findViewById(R.id.txtMesAno);
         TextView valor = (TextView) rowView.findViewById(R.id.txtValorForn);
         TextView tipo = (TextView) rowView.findViewById(R.id.txtNomeForn);
 

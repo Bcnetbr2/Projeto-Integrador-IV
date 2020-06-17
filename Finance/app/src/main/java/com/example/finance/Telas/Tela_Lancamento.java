@@ -52,6 +52,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
     String[] tipo = {"Receita","Despesa"};
     ArrayAdapter<String> adapterTipo;
     ConverterData dc;
+    Button btnMostrarFornecedor;
     UsuarioDao usuarioDao;
     //Usuario usuario;
     LancamentoDao lancamentoDao;
@@ -114,6 +115,8 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         //botão excluir lançamento
         btnExcluirLancamento = (Button) findViewById(R.id.btnExcluirLancamento);
         btnExcluirLancamento.setOnClickListener(this);
+        btnMostrarFornecedor = (Button) findViewById(R.id.btnMostrarFornecedor);
+        btnMostrarFornecedor.setOnClickListener(this);
         //conversor de data
 
         //Classes dao
@@ -138,6 +141,7 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         edtData.setEnabled(false);
 
         if(ControleEntidades.getStatus().equals("vazio")){
+            btnExcluirLancamento.setVisibility(View.INVISIBLE);
             btnExcluirLancamento.setEnabled(false);
             Log.e("Status",ControleEntidades.getStatus());
         }
@@ -224,6 +228,11 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
            entrarLacamento();
            ControleEntidades.setStatus("vazio");
            finish();
+       }
+       else if(v==btnMostrarFornecedor){
+
+           MostrarFornecedor();
+
        }
 
 
@@ -320,6 +329,15 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
             ControleEntidades.setStatus("vazio");
             finish();
         }
+    }
+    private void MostrarFornecedor(){
+
+        Intent profile = new Intent(this, AdicionarFornecedor.class);
+        startActivity(profile);
+        Fornecedor fornecedor = (Fornecedor)spFornecedor.getSelectedItem();
+        ControleEntidades.setFornecedor(fornecedor);
+        ControleEntidades.setStatusForn("consulta");
+
     }
     private void atualizarCategoria2() {
 

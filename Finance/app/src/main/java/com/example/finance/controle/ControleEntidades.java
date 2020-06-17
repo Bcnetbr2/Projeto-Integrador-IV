@@ -3,6 +3,7 @@ package com.example.finance.controle;
 import android.app.Application;
 
 import com.example.finance.entidades.Categoria;
+import com.example.finance.entidades.Fornecedor;
 import com.example.finance.entidades.Lancamento;
 import com.example.finance.entidades.Usuario;
 
@@ -17,6 +18,8 @@ public class ControleEntidades extends Application {
     private static Date dataInicial;
     private static Date dataFinal;
     private static String statusFiltro = "inativo";
+    private static String statusForn = "";
+    private static Fornecedor fornecedor;
 
     public static Usuario getUsuario() {
         return usuario;
@@ -72,5 +75,21 @@ public class ControleEntidades extends Application {
 
     public static void setStatusFiltro(String novoStatus2) {
         statusFiltro = novoStatus2;
+    }
+
+    public static String getStatusForn() {
+        return statusForn;
+    }
+
+    public static void setStatusForn(String statusForn) {
+        ControleEntidades.statusForn = statusForn;
+    }
+
+    public static Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public static void setFornecedor(Fornecedor fornecedor) {
+        ControleEntidades.fornecedor = fornecedor;
     }
 }

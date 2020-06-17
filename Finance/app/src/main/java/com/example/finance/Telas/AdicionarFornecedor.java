@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.finance.R;
 import com.example.finance.configDaos.FornecedorDao;
+import com.example.finance.controle.ControleEntidades;
 import com.example.finance.entidades.Fornecedor;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
@@ -34,13 +35,18 @@ public class AdicionarFornecedor extends Activity implements View.OnClickListene
         setContentView(R.layout.fornecedor);
 
         variaveis();
-        List<Fornecedor> lista = fornecedorDao.listar();
+       if(ControleEntidades.getStatusForn().equals("consulta")){
 
-        for ( Fornecedor f:lista) {
+           edtNomeFornecedor.setText(ControleEntidades.getFornecedor().getNome());
+           edtEmailFornecedor.setText(ControleEntidades.getFornecedor().getEmail());
+           edtTelefoneFornecedor.setText(ControleEntidades.getFornecedor().getTelefone());
+           edtUfFornecedor.setText(ControleEntidades.getFornecedor().getUf());
+           btnAdicionarFornecedor.setText("FECHAR");
 
-            Log.e("fornecedor", f.getNome().toString());
 
-        }
+
+
+       }
 
 
 }
@@ -73,7 +79,14 @@ private void variaveis(){
     @Override
     public void onClick(View v) {
         if (v == btnAdicionarFornecedor){
-            adicionarFornecedor();
+            if(btnAdicionarFornecedor.getText().equals("FECHAR")){
+                finish();
+                ControleEntidades.setStatusForn("");
+            }
+            else{
+                adicionarFornecedor();
+            }
+
         }
 
     }

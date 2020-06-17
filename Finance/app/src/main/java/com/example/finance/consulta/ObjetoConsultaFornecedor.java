@@ -3,7 +3,7 @@ package com.example.finance.consulta;
 public class ObjetoConsultaFornecedor {
 
     private String mes;
-    private String valor;
+    private float valor;
     private String nomeFornecedor;
 
     public String getMes() {
@@ -14,11 +14,11 @@ public class ObjetoConsultaFornecedor {
         this.mes = mes;
     }
 
-    public String getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 

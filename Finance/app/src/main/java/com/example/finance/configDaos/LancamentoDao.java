@@ -194,7 +194,7 @@ public class LancamentoDao {
     public List<ObjetoConsultaMes> listarLancFiltroData(long id_usuario) throws ParseException {
 
         String sql = "Select strftime(\"%m-%Y\",data/1000,'unixepoch') AS mes,sum(valor),tipo as tipo  from lancamento  \n" +
-                "WHERE id_usuario = ? GROUP BY mes,tipo ORDER BY mes DESC";
+                "WHERE id_usuario = ? GROUP BY mes,tipo ORDER BY tipo, mes DESC";
         String[] valores = new String[] {String.valueOf(id_usuario)};
         Cursor c = finance.rawQuery(sql, valores);
 
@@ -228,7 +228,7 @@ public class LancamentoDao {
 
             ObjetoConsultaFornecedor resultado = new ObjetoConsultaFornecedor();
             resultado.setMes(c.getString(0));
-            resultado.setValor(c.getString(1));
+            resultado.setValor(c.getFloat(1));
             resultado.setNomeFornecedor(c.getString(2));
 
             lista.add(resultado);
@@ -250,7 +250,7 @@ public class LancamentoDao {
 
             ObjetoConsultaCategoria resultado = new ObjetoConsultaCategoria();
             resultado.setMes(c.getString(0));
-            resultado.setValor(c.getString(1));
+            resultado.setValor(c.getFloat(1));
             resultado.setNomeCategoria(c.getString(2));
 
             lista.add(resultado);

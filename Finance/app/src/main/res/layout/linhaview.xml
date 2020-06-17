@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txtDataLc"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/AmareloOuro"
-        android:fontFamily="@font/montserrat"
-        android:text="TextView"
-        android:textAlignment="gravity"
-        android:textColor="@color/VerdeDinheiro"
-        android:textColorHint="#FFFFFF" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="25dp"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/txtTipoLc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
             android:background="@color/AmareloOuro"
             android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal|center_vertical"
             android:text="TextView"
-            android:textAlignment="gravity"
-            android:textColor="@color/VerdeDinheiro" />
+            android:textColor="@color/VerdeDinheiro"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtDataLc"
+            app:layout_constraintEnd_toStartOf="@+id/txtDataLc"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtDataLc"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:background="@color/AmareloOuro"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="TextView"
+            android:textColor="@color/VerdeDinheiro"
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintEnd_toStartOf="@+id/txtValorLc"
+            app:layout_constraintStart_toEndOf="@+id/txtTipoLc"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtValorLc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
             android:background="@color/AmareloOuro"
             android:fontFamily="@font/montserrat"
-            android:gravity="right"
+            android:gravity="right|center_vertical"
             android:text="TextView"
             android:textAlignment="gravity"
             android:textColor="@color/VerdeDinheiro"
-            android:textColorHint="#FFFFFF" />
-    </LinearLayout>
+            android:textColorHint="#FFFFFF"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtDataLc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtDataLc" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>

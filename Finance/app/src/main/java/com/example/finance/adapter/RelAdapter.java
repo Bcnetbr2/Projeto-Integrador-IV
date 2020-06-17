@@ -37,7 +37,7 @@ public class RelAdapter extends ArrayAdapter<Lancamento> {
 
         NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
 
-        data.setText(cd.formataDataString(elementos.get(position).getData()));
+        data.setText(cd.formataDataString2(elementos.get(position).getData()));
         tipo.setText(elementos.get(position).getFornecedor().getNome());
         valor.setText(formato.format(elementos.get(position).getValor()));
 
