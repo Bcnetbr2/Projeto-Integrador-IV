@@ -100,7 +100,7 @@ private void variaveis(){
 
         long id = fornecedorDao.inserir(fornecedor);
 
-        Toast.makeText(this, "AdicionarFornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Fornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
 
         finish();
     }

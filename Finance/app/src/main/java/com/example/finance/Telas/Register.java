@@ -143,6 +143,7 @@ public class Register extends Activity implements View.OnClickListener {
         String mobile = edtTelefone.getText().toString();
         String password = edtSenha.getText().toString();
         String reEnterPassword = edtConfirmeSenha.getText().toString();
+        String renda =  edtRenda.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
             edtNome.setError("precisa ter no minimo 3 caracteres");
@@ -177,6 +178,12 @@ public class Register extends Activity implements View.OnClickListener {
             valid = false;
         } else {
             edtConfirmeSenha.setError(null);
+        }
+        if(renda.isEmpty() || renda.length() < 4){
+            edtRenda.setError("Digite um valor com no minimo 4 caracteres");
+            valid = false;
+        }else{
+            edtRenda.setError(null);
         }
 
         return valid;

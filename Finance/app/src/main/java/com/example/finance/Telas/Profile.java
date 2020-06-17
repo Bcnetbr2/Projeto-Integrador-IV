@@ -60,6 +60,7 @@ public class Profile extends Activity implements View.OnClickListener{
         edtSenhaAtual = (EditText) findViewById(R.id.edtSenhaAtual);
         edtSenhaNova = (EditText) findViewById(R.id.edtSenhaNova);
         //edtCofirmaNovaSenha = (EditText) findViewById(R.id.edtConfirmacaoSenha);
+        edtSenhaAtual.setEnabled(false);
 
         btnSalvarDados = (Button) findViewById(R.id.btnAdicionarFornecedor);
         btnSalvarDados.setOnClickListener(this);
@@ -83,8 +84,11 @@ public class Profile extends Activity implements View.OnClickListener{
         }
 
         else if (v == btnSalvarDados){
-            salvarDados();
-            finish();
+            if(validate()){
+                salvarDados();
+                finish();
+            }
+
         }
     }
 
@@ -131,6 +135,44 @@ public class Profile extends Activity implements View.OnClickListener{
 
 
 
+    }
+    public boolean validate() {
+        boolean valid = true;
+
+        String name = edtRecebeNome.getText().toString();
+        String email = edtRecebeEmail.getText().toString();
+        String mobile = edtRecebeTele.getText().toString();
+        String renda =  edtRecebeRenda.getText().toString();
+
+        if (name.isEmpty() || name.length() < 3) {
+            edtRecebeNome.setError("precisa ter no minimo 3 caracteres");
+            valid = false;
+        } else {
+            edtRecebeNome.setError(null);
+        }
+
+        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            edtRecebeEmail.setError("Insira um e-mail valido");
+            valid = false;
+        } else {
+            edtRecebeEmail.setError(null);
+        }
+
+        if (mobile.isEmpty() || mobile.length()!=14) {
+            edtRecebeTele.setError("Entre com um numero de telefone valido, com DDD");
+            valid = false;
+        } else {
+            edtRecebeTele.setError(null);
+        }
+
+        if(renda.isEmpty() || renda.length() < 4){
+            edtRecebeRenda.setError("Digite um valor com no minimo 4 caracteres");
+            valid = false;
+        }else{
+            edtRecebeRenda.setError(null);
+        }
+
+        return valid;
     }
 
 }
