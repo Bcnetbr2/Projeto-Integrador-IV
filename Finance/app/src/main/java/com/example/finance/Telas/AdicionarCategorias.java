@@ -45,10 +45,6 @@ public class AdicionarCategorias extends Activity implements View.OnClickListene
 
         categoriaDao = new CategoriaDao(this);
 
-
-
-
-
     }
 
     @Override

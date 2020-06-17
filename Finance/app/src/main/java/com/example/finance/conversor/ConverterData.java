@@ -19,7 +19,6 @@ public class ConverterData {
 
         return data;
 
-
     }
 
     public Date converterStringData(String dataString) throws ParseException {
@@ -86,8 +85,6 @@ public class ConverterData {
         calendarData.add(Calendar.MINUTE, 0);
         calendarData.add(Calendar.SECOND, 0);
 
-        //calendarData.add(Calendar.HOUR,1);
-
         Date dataFinal = calendarData.getTime();
 
         return dataFinal;
@@ -104,8 +101,6 @@ public class ConverterData {
         calendarData.add(Calendar.HOUR, 23);
         calendarData.add(Calendar.MINUTE, 59);
         calendarData.add(Calendar.SECOND, 59);
-
-        //calendarData.add(Calendar.HOUR,1);
 
         Date dataFinal = calendarData.getTime();
 
@@ -133,9 +128,7 @@ public class ConverterData {
         calendarData.add(Calendar.MINUTE, 0);
         calendarData.add(Calendar.SECOND, 0);
 
-        //calendarData.add(Calendar.HOUR,1);
         int numeroDiasParaSubtrair = -7;
-
 
         calendarData.add(Calendar.DATE, numeroDiasParaSubtrair);
 
@@ -155,8 +148,6 @@ public class ConverterData {
         calendarData.add(Calendar.HOUR, 23);
         calendarData.add(Calendar.MINUTE, 59);
         calendarData.add(Calendar.SECOND, 59);
-
-        //calendarData.add(Calendar.HOUR,1);
 
         Date dataFinal = calendarData.getTime();
 
@@ -181,6 +172,4 @@ public class ConverterData {
         return d;
 
     }
-
-
 }

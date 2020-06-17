@@ -8,40 +8,47 @@
     android:orientation="vertical"
     tools:context=".Telas.AdicionarCategorias">
 
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Adicionar Categoria"
-        android:textAlignment="center"
-        android:textColor="@color/VerdeDinheiro"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        android:layout_height="275dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtNomeFornecedor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="50dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Nome"
-        android:inputType="textMultiLine" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Adicionar Categoria"
+            android:textAlignment="center"
+            android:textColor="@color/VerdeDinheiro"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnAdicionarFornecedor"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
+        <EditText
+            android:id="@+id/edtNomeFornecedor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="Nome"
+            android:inputType="textMultiLine" />
 
-        android:layout_marginTop="30dp"
-        android:layout_marginRight="50dp"
-        android:background="@drawable/buttonprincipalverde"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/Adicionar"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+        <Button
+            android:id="@+id/btnAdicionarFornecedor"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="50dp"
+
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="50dp"
+            android:background="@drawable/buttonprincipalverde"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/Adicionar"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </LinearLayout>
+
 </LinearLayout>

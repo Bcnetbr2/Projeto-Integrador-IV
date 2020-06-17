@@ -43,9 +43,6 @@ public class AdicionarFornecedor extends Activity implements View.OnClickListene
            edtUfFornecedor.setText(ControleEntidades.getFornecedor().getUf());
            btnAdicionarFornecedor.setText("FECHAR");
 
-
-
-
        }
 
 
@@ -71,8 +68,6 @@ private void variaveis(){
     SimpleMaskFormatter FormatarUF = new SimpleMaskFormatter("LL");
     MaskTextWatcher MascaraUF = new MaskTextWatcher(edtUfFornecedor, FormatarUF);
     edtUfFornecedor.addTextChangedListener(MascaraUF);
-
-
 
 }
 
@@ -100,7 +95,7 @@ private void variaveis(){
 
         long id = fornecedorDao.inserir(fornecedor);
 
-        Toast.makeText(this, "AdicionarFornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Fornecedor adicionado com sucesso", Toast.LENGTH_LONG).show();
 
         finish();
     }

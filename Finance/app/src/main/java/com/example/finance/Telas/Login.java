@@ -41,11 +41,7 @@ public class Login extends Activity implements View.OnClickListener {
 
     }
 
-
-
     private void variaveis(){
-
-
 
         tvSemConta = (TextView) findViewById(R.id.tvSemConta);
         tvSemConta.setOnClickListener(this);
@@ -70,8 +66,8 @@ public class Login extends Activity implements View.OnClickListener {
 
             naoTemCadastro(us);
 
-
         }
+
         else if (v == btnFinalizarLogin){
 
             login();
@@ -108,7 +104,6 @@ public class Login extends Activity implements View.OnClickListener {
 
                     finalizarLogin();
 
-
                 }
                 else{
 
@@ -124,8 +119,6 @@ public class Login extends Activity implements View.OnClickListener {
             if (requestCode == REQUEST_SIGNUP) {
                 if (resultCode == RESULT_OK) {
 
-                    // TODO: Implement successful signup logic here
-                    // By default we just finish the Activity and log them in automatically
                     this.finish();
                 }
             }
@@ -133,7 +126,7 @@ public class Login extends Activity implements View.OnClickListener {
 
         @Override
         public void onBackPressed() {
-            // Disable going back to the MainActivity
+
             moveTaskToBack(true);
         }
 

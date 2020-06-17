@@ -21,13 +21,13 @@ public class RelAdapter extends ArrayAdapter<Lancamento> {
     private final List<Lancamento> elementos;
     private ConverterData cd = new ConverterData();
 
-
+    //criando uma lista sem filtros
     public RelAdapter(Context context, List<Lancamento> elementos) {
         super(context, R.layout.linhaview,elementos);
         this.context = context;
         this.elementos = elementos;
     }
-
+    // colocando os valores que será apresentado sem filtros
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.linhaview, parent, false);

@@ -39,7 +39,6 @@ public class Filtro extends Activity implements View.OnClickListener{
         setContentView(R.layout.filtro);
         variaveis();
 
-
     }
 
     private void variaveis(){
@@ -47,7 +46,6 @@ public class Filtro extends Activity implements View.OnClickListener{
         edtDataInicial = (EditText) findViewById(R.id.edtDataInicialFiltro);
         edtDataFinal = (EditText) findViewById(R.id.edtDataFinalFiltro);
         spCategoriaFiltro = (Spinner) findViewById(R.id.spCategoriaFiltro);
-
 
         btnAdicionarFiltro = (Button) findViewById(R.id.btnAdicionarFiltro);
         btnAdicionarFiltro.setOnClickListener(this);
@@ -63,7 +61,6 @@ public class Filtro extends Activity implements View.OnClickListener{
         SimpleMaskFormatter FormatarDataFinal = new SimpleMaskFormatter("NN/NN/NNNN");
         MaskTextWatcher MascaraDataFinal = new MaskTextWatcher(edtDataFinal, FormatarDataFinal);
         edtDataFinal.addTextChangedListener(MascaraDataFinal);
-
 
     }
 
@@ -84,9 +81,7 @@ public class Filtro extends Activity implements View.OnClickListener{
         Categoria cat = (Categoria)spCategoriaFiltro.getSelectedItem();
         ControleEntidades.setCategoria(cat);
 
-
         ControleEntidades.setStatusFiltro("ativo");
-
 
     }
 

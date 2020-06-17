@@ -23,13 +23,13 @@ public class FornAdapter extends ArrayAdapter<ObjetoConsultaFornecedor> {
     private final List<ObjetoConsultaFornecedor> elementos;
     private ConverterData cd = new ConverterData();
 
-
+    // criando uma lista com filtros por fornecedor
     public FornAdapter(Context context, List<ObjetoConsultaFornecedor> elementos) {
         super(context, R.layout.consultaporfornecedorview,elementos);
         this.context = context;
         this.elementos = elementos;
     }
-
+    // colocando quais valores irão aparecer para o usuario
     public View getView(int position, View convertView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.consultaporfornecedorview, parent, false);
