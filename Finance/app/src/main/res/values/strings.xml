@@ -11,7 +11,7 @@
         <item>Investimento</item>
     </string-array>
     <string name="dtInicialFiltro">"Data Inicial</string>
-    <string name="dtFinalFiltro">Data Inicial</string>
+    <string name="dtFinalFiltro">Data Final</string>
     <string name="categoriaFiltro">Categoria</string>
     <string name="tituloFiltro">Filtro</string>
 

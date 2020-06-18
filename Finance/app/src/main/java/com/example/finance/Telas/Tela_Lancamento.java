@@ -190,17 +190,21 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
            entrarFornecedor();
        }
        else if (v == btnAdicionarLancamento){
-           try {
-               adicionarLancamento();
-           } catch (ParseException e) {
-               e.printStackTrace();
+           if(validate()) {
+               try {
+                   adicionarLancamento();
+               } catch (ParseException e) {
+                   e.printStackTrace();
+               }
            }
        }
        else if(v == btnExcluirLancamento){
-           try {
-               excluirLancamento();
-           } catch (ParseException e) {
-               e.printStackTrace();
+           if(validate()) {
+               try {
+                   excluirLancamento();
+               } catch (ParseException e) {
+                   e.printStackTrace();
+               }
            }
        }
        else if (v == tgReport){
@@ -387,6 +391,29 @@ public class Tela_Lancamento extends Activity implements View.OnClickListener{
         edtValorGasto.setText(String.valueOf(ControleEntidades.getLancamento().getValor()));
         edtDescLancamento.setText(ControleEntidades.getLancamento().getDescricao());
 
+    }
+    public boolean validate() {
+        boolean valid = true;
+
+
+        String ValorGasto = edtValorGasto.getText().toString();
+        String DescLancamento = edtDescLancamento.getText().toString();
+
+
+        if (ValorGasto.isEmpty() || ValorGasto.length() < 4) {
+            edtValorGasto.setError("O campo precisa ter no minimo 4 caracteres");
+            valid = false;
+        } else {
+            edtValorGasto.setError(null);
+        }
+        if(DescLancamento.isEmpty() || DescLancamento.length() < 4){
+            edtDescLancamento.setError("O campo precisa ter no minimo 4 caracteres");
+            valid = false;
+        }else{
+            edtDescLancamento.setError(null);
+        }
+
+        return valid;
     }
 
  }
